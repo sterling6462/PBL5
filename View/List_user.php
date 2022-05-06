@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" type="text/css" href="../CSS/List_user.css">
+    <link rel="stylesheet" type="text/css" href="CSS/List_user.css">
 </head>
 <div class="listuser">
     <h1>DANH SACH CAC USER</h1>
@@ -34,8 +34,8 @@
                 <td><?php echo $value['Gioitinh']; ?></td>
                 <td><?php echo $value['Id_Quyen']; ?></td>
                 <td>
-                    <a href="Index_user.php?action=edit&id=<?php echo $value['Id_User'];?>">Edit</a>
-                    <a href="Index_user.php?action=delete&id=<?php echo $value['Id_User'];?>">Delete</a>
+                    <a href="index.php?controller=user&action=edit&id=<?php echo $value['Id_User'];?>">Edit</a>
+                    <a href="index.php?controller=user&action=delete&id=<?php echo $value['Id_User'];?>">Delete</a>
                 </td>
 
             </tr>

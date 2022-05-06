@@ -24,7 +24,8 @@ class m_user
     }
     
     public function execute($sql)
-    {   $this->connect();
+    {   
+        $this->connect();
         $this->result=$this->conn->query($sql);
         return $this->result;
     }
@@ -74,7 +75,40 @@ class m_user
         return $data;
 
     }
+    public function ktraemailuser($ten,$email)
+    {
+        $sql="SELECT * FROM user WHERE Ten='$ten' OR Email='$email'";
+        $this->execute($sql);
+        if($this->num_rows()==0)
+        {
+            $ktra=0;
+        }
+        else{
+            $ktra=1;
+        }
+        return $ktra;
 
+    }
+    public function ktrauserpass($ten,$pass)
+    {
+        $sql="SELECT * FROM user WHERE Ten='$ten' AND Matkhau='$pass'";
+        $this->execute($sql);
+        if($this->num_rows()==0)
+        {
+            $ktra=0;
+        }
+        else{
+            $ktra=1;
+        }
+        return $ktra;
+
+    }
+
+    public function adduser($ten,$ngaysinh,$diachi,$email,$matkhau,$gioitinh,$quyen)
+    {
+       $sql="INSERT INTO `user` (Ten,Ngaysinh,Diachi,Email,Matkhau,Gioitinh,Id_Quyen) VALUES ('$ten', '$ngaysinh', '$diachi','$email', '$matkhau', '$gioitinh','$quyen')";
+       return $this->execute($sql);
+    }
     public function num_rows()
     {
         if($this->result)
@@ -103,6 +137,23 @@ class m_user
             $data=0;
         }
         return $data;
+    }
+    public function getusertheoten($ten)
+    {
+        $sql="SELECT * FROM user WHERE Ten='$ten'";
+
+        $this->execute($sql);
+        if($this->num_rows()!=0)
+        {
+            $data=mysqli_fetch_array($this->result);
+
+        }
+        else
+        {
+            $data=0;
+        }
+        return $data;
+
     }
 
     public function edituser($id,$Ten,$NS,$DC,$Email,$Pass,$GT,$Quyen)

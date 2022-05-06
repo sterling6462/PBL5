@@ -1,5 +1,5 @@
 <head>
-    <link rel="stylesheet" type="text/css" href="../CSS/Edit_user.css">
+    <link rel="stylesheet" type="text/css" href="CSS/Edit_user.css">
 </head>
 
 <form action="" method="POST">
