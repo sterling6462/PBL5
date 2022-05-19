@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../css/them_chuong.css">
+    <link rel="stylesheet" href="CSS/them_chuong.css">
     <title>Thêm chương</title>
 </head>
+
 <body>
     <div class="content">
         <div class="them_chuong">
@@ -43,4 +45,5 @@
         </div>
     </div>
 </body>
+
 </html>

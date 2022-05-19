@@ -1,0 +1,18 @@
+.listuser {
+  width: auto;
+  margin: auto;
+  margin-top: 60px;
+}
+.listuser table {
+  margin-left: auto;
+  margin-right: auto;
+  border: 6px solid #6550c7;
+}
+.listuser h1 {
+  text-align: center;
+}
+.listuser td {
+  background-color: #6550c7;
+  width: 130px;
+  text-align: center;
+}
