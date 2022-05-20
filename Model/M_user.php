@@ -5,7 +5,7 @@ class m_user
     private $hostname='localhost';
     private $username='root';
     private $pass='';
-    private $dbname='pbl5'; 
+    private $dbname='pbl5_1'; 
     private $conn=null;
     private $result=null;
 
@@ -24,7 +24,8 @@ class m_user
     }
     
     public function execute($sql)
-    {   $this->connect();
+    {   
+        $this->connect();
         $this->result=$this->conn->query($sql);
         return $this->result;
     }
@@ -40,6 +41,31 @@ class m_user
             $data=0;
         }
         return $data;
+    }
+    public function travelistuser()
+    {
+        $sql="SELECT * FROM user ";
+        $this->execute($sql);
+        // if($this->result)
+        // {
+            $i=1;
+            while($data=mysqli_fetch_array($this->result))
+            {
+                $Id_User=$data['Id_User'];
+                $Ten=$data['Ten'];
+                $Ngaysinh=$data['Ngaysinh'];
+                $Diachi=$data['Diachi'];
+                $Email=$data['Email'];
+                $Matkhau=$data['Matkhau'];
+                $Gioitinh=$data['Gioitinh'];
+                $Id_Quyen=$data['Id_Quyen'];
+                
+                $users[$i]=new e_user($Id_User,$Ten,$Ngaysinh,$Diachi,$Email,$Matkhau,$Gioitinh,$Id_Quyen);
+                $i++;
+            }
+            
+        //}
+        return $users;
     }
     public function getalluser($table)
     {
@@ -74,7 +100,62 @@ class m_user
         return $data;
 
     }
+    public function traidtheoten($Ten)
+    {
+        $users=$this->travelistuser();
+        for($i=1;$i<=sizeof($users);$i++)
+        {
+            if($users[$i]->Ten==$Ten)
+            {
+                return $users[$i]->Id_User;
+            }
+        }
+        
+    }
+    public function ktraemailuser($ten,$email)
+    {
+        $sql="SELECT * FROM user WHERE Ten='$ten' OR Email='$email'";
+        $this->execute($sql);
+        if($this->num_rows()==0)
+        {
+            $ktra=0;
+        }
+        else{
+            $ktra=1;
+        }
+        return $ktra;
 
+    }
+    public function ktrauserpass($ten,$pass)
+    {
+        $sql="SELECT * FROM user WHERE Ten='$ten' AND Matkhau='$pass'";
+        $this->execute($sql);
+        if($this->num_rows()==0)
+        {
+            $ktra=0;
+        }
+        else{
+            $ktra=1;
+        }
+        return $ktra;
+
+    }
+
+    public function gan()
+    {
+        
+    }
+    public function addtest(e_user $user)
+    {
+        $sql="INSERT INTO `user` (Ten,Ngaysinh,Diachi,Email,Matkhau,Gioitinh,Id_Quyen) VALUES ('$user->Ten', '$user->Ngaysinh', '$user->Diachi','$user->Email', '$user->Matkhau', '$user->Gioitinh','$user->Id_Quyen')";
+       return $this->execute($sql);
+    }
+
+    public function adduser($ten,$ngaysinh,$diachi,$email,$matkhau,$gioitinh,$quyen)
+    {
+       $sql="INSERT INTO `user` (Ten,Ngaysinh,Diachi,Email,Matkhau,Gioitinh,Id_Quyen) VALUES ('$ten', '$ngaysinh', '$diachi','$email', '$matkhau', '$gioitinh','$quyen')";
+       return $this->execute($sql);
+    }
     public function num_rows()
     {
         if($this->result)
@@ -103,6 +184,23 @@ class m_user
             $data=0;
         }
         return $data;
+    }
+    public function getusertheoten($ten)
+    {
+        $sql="SELECT * FROM user WHERE Ten='$ten'";
+
+        $this->execute($sql);
+        if($this->num_rows()!=0)
+        {
+            $data=mysqli_fetch_array($this->result);
+
+        }
+        else
+        {
+            $data=0;
+        }
+        return $data;
+
     }
 
     public function edituser($id,$Ten,$NS,$DC,$Email,$Pass,$GT,$Quyen)
