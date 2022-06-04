@@ -31,8 +31,8 @@
                 <?php
                     $stt = 1;
                     for($i=0;$i<sizeof($danhsachtruyen);$i++){
-                        //  $nguoidang = $db->getNguoiDang($danhsachtruyen[$i]->Id_User);
-                        //  $loaitruyen = $db->getTheLoai($danhsachtruyen[$i]->Id_Loai);
+                            $nguoidang = $db->getNguoiDang($danhsachtruyen[$i]->Id_User);
+                            $loaitruyen = $db->getTheLoai($danhsachtruyen[$i]->Id_Loai);
                     ?>
                 <tr>
                     <td><?= $stt ?></td>

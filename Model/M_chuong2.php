@@ -33,7 +33,7 @@ class m_chuong2
     public function getChuong($idchuong)
         {
             $sql = "SELECT * from Chuong WHERE Id_Chuong='$idchuong'  ";
-         
+            
             $rs = mysqli_query($this->conn, $sql);
             $obj = $rs->fetch_object();
             $idchuong =$obj->Id_Chuong;
@@ -42,7 +42,53 @@ class m_chuong2
             $chuongten =  $obj->Chuongten;
             $noidung =  $obj->Noidung;
             $chuong = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
-         return $chuong;
+            return $chuong;
+        }
+
+        public function getChuongSau($idchuong)
+        {
+            try {
+                
+                $sql = "SELECT Chuongso,Id_Truyen from Chuong WHERE Id_Chuong = '$idchuong' ";
+                $rs = mysqli_query($this->conn, $sql);
+                $obj = $rs->fetch_object();
+                $chuongso = $obj->Chuongso + 1;
+                $idtruyen =  $obj->Id_Truyen;
+    
+                $sql = "SELECT * from Chuong WHERE Chuongso = '$chuongso' AND Id_Truyen = '$idtruyen'";
+                $rs = mysqli_query($this->conn, $sql);
+                $obj = $rs->fetch_object();
+                $idchuong =$obj->Id_Chuong;
+                $idtruyen =  $obj->Id_Truyen;
+                $chuongso = $obj->Chuongso;
+                $chuongten =  $obj->Chuongten;
+                $noidung =  $obj->Noidung;
+                $chuongsau = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
+                return $chuongsau;
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
+        }
+
+        public function getChuongTruoc($idchuong)
+        {
+            $sql = "SELECT Chuongso,Id_Truyen from Chuong WHERE Id_Chuong = '$idchuong' ";
+            $rs = mysqli_query($this->conn, $sql);
+            $obj = $rs->fetch_object();
+            $chuongso = $obj->Chuongso - 1;
+            $idtruyen =  $obj->Id_Truyen;
+
+            $sql = "SELECT * from Chuong WHERE Chuongso = '$chuongso' AND Id_Truyen = '$idtruyen'";
+            $rs = mysqli_query($this->conn, $sql);
+            $obj = $rs->fetch_object();
+            $idchuong =$obj->Id_Chuong;
+            $idtruyen =  $obj->Id_Truyen;
+            $chuongso = $obj->Chuongso;
+            $chuongten =  $obj->Chuongten;
+            $noidung =  $obj->Noidung;
+            echo $idchuong;
+            $chuongtruoc = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
+            return $chuongtruoc;
         }
 }
 

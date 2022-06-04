@@ -24,7 +24,7 @@ session_start();
                 require_once("View/Trangchu.php");
                 break;
             }
-       
+    
         
         
         case 'dangnhap':
@@ -33,18 +33,18 @@ session_start();
                 {
                     $ten =trim($_POST['username']);
                     $matkhau = trim($_POST['password']);
-               
+            
                 if(!$ten||!$matkhau)
                 {
                     echo '<script language="javascript">alert("Mời nhập đủ thông tin !!!"); window.location="index.php?controller=user&action=dangnhap";</script>';
                 }
                 else{
-                   
+                
                     $ktra=$db->ktrauserpass($ten,$matkhau);
                     if($ktra==1)
                     {
                         $quyen=$db->getusertheoten($ten);
-                       
+                    
                         
                         $_SESSION["id_quyen"] =$quyen['Id_Quyen'];
                         echo '<script language="javascript">alert("Đăng nhập thành công !!!"); window.location="index.php?controller=user&action=trangchu";</script>';
@@ -63,7 +63,7 @@ session_start();
 
         case 'add':
             {
-                      
+                    
                 if (isset($_POST['signup'])){
 
                     $ten =trim($_POST['username']);
@@ -74,35 +74,33 @@ session_start();
                     $gioitinh =$_POST['gioitinh'];
                     $quyen =$_POST['quyen'];
                     $ktra=$db->ktraemailuser($ten,$email);
-                 
-                  
+                
+                
                     if(!$ten||!$ngaysinh||!$diachi||!$email||!$matkhau)
                     {
                         echo '<script language="javascript">alert("Mời nhập đủ thông tin !!!"); window.location="index.php?controller=user&action=add";</script>';
                     }
                     else
                     {
-                  
+                
                         if($ktra==0)
-                         {
+                        {
                             if($db->adduser($ten,$ngaysinh,$diachi,$email,$matkhau,$gioitinh,$quyen))
                             {
                                 echo '<script language="javascript">alert("Dang ky thanh cong "); window.location="index.php?controller=user&action=dangnhap";</script>';
                             }
-                         }
+                        }
                         else 
                         {
                             echo '<script language="javascript">alert("Trùng tên user hoặc email !!!"); window.location="index.php?controller=user&action=add";</script>';
                         }
                     }
 
-                   
+                
                     
                     
                 }
-               
-              
-              
+
                 require_once('View/Dangky.php');
                 break;
             }
@@ -132,13 +130,13 @@ session_start();
                         echo '<script language="javascript">alert("Chinh sua thanh cong user"); window.location="index.php?controller=user&action=list";</script>';
                         // header('location: index.php?action=list');
                     }
-                   
+                
 
                 }
                 
                 break;
             }
-     
+    
         case 'delete':
             {   
                 if(isset($_GET['id']))
@@ -157,11 +155,11 @@ session_start();
             }
         case 'test':
             {
-               
+            
             }
         default:
             {
-              
+            
                 $users=$db->travelistuser();
                 require_once('View/List_user.php');
                 break;

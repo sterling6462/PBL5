@@ -102,9 +102,9 @@
 
     <?php   
         $link=mysqli_connect("localhost","root","") or die("khong the ket noi den co so du lieu");
-	    mysqli_select_db($link,"pbl5_1");
-	    $sql="SELECT * FROM truyen where Tinhtrang=1";
-	    $result=mysqli_query($link,$sql);
+        mysqli_select_db($link,"pbl5_1");
+        $sql="SELECT * FROM truyen where Tinhtrang=1";
+        $result=mysqli_query($link,$sql);
 
 
         $sql1="SELECT * FROM loaitruyen";
@@ -125,10 +125,12 @@
                 <li><a href="#truyenbo">Truyện bộ</a></li>
                 <li><a href="#truyenmoi">Truyện mới</a></li>
                 <div class="navbar-end">
-                    <a class="dki" href="http://localhost/PBL5/index.php?controller=user&action=add">Đăng kí</a>
+                    <a class="dki" href="../index.php?controller=user&action=add">Đăng kí</a>
+                    <!-- <a class="dki" href="http://localhost/PBL5/index.php?controller=user&action=add">Đăng kí</a> -->
                     <a>/</a>
-                    <a class="dnhap" href="http://localhost/PBL5/index.php?controller=user&action=dangnhap">Đăng
-                        nhập</a>
+                    <a class="dnhap" href="../index.php?controller=user&action=dangnhap">Đăng nhập</a>
+                    <!-- <a class="dnhap" href="http://localhost/PBL5/index.php?controller=user&action=dangnhap">Đăng nhập</a> -->
+
                 </div>
             </ul>
 

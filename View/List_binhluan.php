@@ -22,7 +22,7 @@
         <tbody>
             <?php
             $stt=1;
-             for($i=1;$i<=sizeof($cmts);$i++){ ?>
+            for($i=1;$i<=sizeof($cmts);$i++){ ?>
             <tr>
                 <td><?php echo $i; ?></td>
                 <td><?php echo $cmts[$i]->Id_Comment; ?></td>

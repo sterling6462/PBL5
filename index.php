@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Quan ly chuong</title>
+    <title>Truyen</title>
 
 </head>
 
@@ -15,7 +15,7 @@
 
 <?php
     include "Model/M_chuong.php";
-   
+
     $dbchuong = new m_chuong;
     $dbchuong->connect();
 

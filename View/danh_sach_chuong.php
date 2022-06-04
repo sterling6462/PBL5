@@ -39,7 +39,6 @@
                         <a
                             href="index.php?controller=admin&action=delete_chuong&idchuong=<?php echo $value['Id_Chuong'];?>">Delete</a>
                     </td>
-
                 </tr>
                 <?php
                             $stt++;

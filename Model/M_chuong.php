@@ -84,13 +84,12 @@
             return $this->execute($sql);
         }
         public function getchuongtheoid($id)
-         {
+        {
             $sql="SELECT * FROM chuong WHERE Id_Chuong='$id'";
             $this->execute($sql);
             if($this->num_rows()!=0)
             {
                 $data=mysqli_fetch_array($this->result);
-    
             }
             else
             {
@@ -106,7 +105,7 @@
         public function getChuong($idchuong)
         {
             $sql = "SELECT * from Chuong WHERE Id_Chuong='$idchuong'  ";
-         
+            
             $rs = mysqli_query($this->conn, $sql);
             $obj = $rs->fetch_object();
             $idchuong =$obj->Id_Chuong;
@@ -115,8 +114,61 @@
             $chuongten =  $obj->Chuongten;
             $noidung =  $obj->Noidung;
             $chuong = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
-         return $chuong;
+            return $chuong;
         }
+
+        public function getChuongSau($idtruyen,$idchuong)
+        {
+            $sql = "SELECT * from Chuong WHERE Id_Chuong='$idchuong' ";
+            $rs = mysqli_query($this->conn, $sql);
+            $obj = $rs->fetch_object();
+            $idchuong =$obj->Id_Chuong;
+            $idtruyen =  $obj->Id_Truyen;
+            $chuongso = $obj->Chuongso;
+            $chuongten =  $obj->Chuongten;
+            $noidung =  $obj->Noidung;
+            $chuongsau = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
+            return $chuongsau;
+        }
+
+        // public function tachSoChuong($str){
+        //     $arr = explode('-',$str);
+        //     return $arr[1];
+        // }
+
+        // public function getchuongtheoSoChuong($chuongso){
+        //     $sql="SELECT * FROM chuong WHERE Chuongso='$chuongso'";
+        //     $this->execute($sql);
+        //     if($this->num_rows()!=0)
+        //     {
+        //         $data=mysqli_fetch_array($this->result);
+        //     }
+        //     else{
+        //         $data=0;
+        //     }
+        //     return $data;
+        // }
+        // public function checkChuongSau($id_truyen){
+        //     try {
+        //         {
+        //             $sql = "SELECT * from Chuong WHERE Id_Truyen='$id_truyen'";
+                    
+        //             $rs = mysqli_query($this->conn, $sql);
+        //             $obj = $rs->fetch_object();
+        //             $idchuong =$obj->Id_Chuong;
+        //             $idtruyen =  $obj->Id_Truyen;
+        //             $chuongso = $obj->Chuongso+1;
+        //             $chuongten =  $obj->Chuongten;
+        //             $noidung =  $obj->Noidung;
+        //             $chuongsau = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
+        //             return $chuongsau;
+        //         }
+
+        //     } catch (PDOException $e) {
+        //         return $e->getMessage();
+        //     }
+        // }
+
         
 
         

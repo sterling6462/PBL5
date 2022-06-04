@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="CSS/danh_sach_chuong.css">
+    <link rel="stylesheet" href="../CSS/danh_sach_chuong.css">
     <title></title>
 </head>
 

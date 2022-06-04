@@ -87,7 +87,7 @@
                         echo '<script language="javascript">alert("Chinh sua thanh cong user"); window.location="index.php?controller=admin&action=danh_sach_chuong";</script>';
                         // header('location: index.php?action=list');
                     }
-                   
+                    
 
                 }
                 break;
