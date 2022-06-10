@@ -8,32 +8,33 @@
         <p>Xin hãy nhập biểu mẫu bên dưới để chỉnh sửa.</p>
         <hr>
         <label for="Username"><b>Username</b></label>
-        <input type="text" name="Username" value="<?php echo $dataedit['Ten']; ?>" required><br>
+        <input type="text" name="Username" value="<?php echo $dataedit->Ten; ?>" required><br>
         <label for="Ngaysinh"><b>Ngay sinh</b></label>
-        <input type="date" name="Ngaysinh" value="<?php echo $dataedit['Ngaysinh']; ?>" required><br><br>
+        <input type="date" name="Ngaysinh" value="<?php echo $dataedit->Ngaysinh; ?>" required><br><br>
         <label for="Diachi"><b>Dia chi</b></label>
-        <input type="text" name="Diachi" value="<?php echo $dataedit['Diachi']; ?>" required>
+        <input type="text" name="Diachi" value="<?php echo $dataedit->Diachi; ?>" required>
         <label for="Email"><b>Email</b></label>
-        <input type="text" name="Email" value="<?php echo $dataedit['Email']; ?>" required>
+        <input type="text" name="Email" value="<?php echo $dataedit->Email; ?>" required>
 
 
         <label for="psw"><b>Mật Khẩu</b></label>
-        <input type="password" name="psw" value="<?php echo $dataedit['Matkhau']; ?>" required>
+        <input type="password" name="psw" value="<?php echo $dataedit->Matkhau; ?>" required>
         <!-- <label for="psw-repeat"><b>Nhập Lại Mật Khẩu</b></label>
         <input type="password" name="psw-repeat" required> -->
         <label for="Gioitinh"><b>Gioi tinh</b></label>
         <select name="Gioitinh">
-            <option <?php if($dataedit['Gioitinh'] == '0'){echo("selected");}?> value="0">Nam</option>
-            <option <?php if($dataedit['Gioitinh'] == '1'){echo("selected");}?> value="1">Nu</option>
+            <option <?php if($dataedit->Gioitinh == '0'){echo("selected");}?> value="0">Nam</option>
+            <option <?php if($dataedit->Gioitinh == '1'){echo("selected");}?> value="1">Nu</option>
 
         </select>
 
 
         <label for="Quyen"><b>Quyen</b></label>
         <select name="Quyen">
-            <option <?php if($dataedit['Id_Quyen'] == '1'){echo("selected");}?> value="1">Doc gia</option>
-            <option <?php if($dataedit['Id_Quyen'] == '2'){echo("selected");}?> value="2">Tac gia</option>
-            <option <?php if($dataedit['Id_Quyen'] == '3'){echo("selected");}?> value="3">QTV</option>
+            <option <?php if($dataedit->Id_Quyen == '1'){echo("selected");}?> value="1">Admin</option>
+            <option <?php if($dataedit->Id_Quyen == '2'){echo("selected");}?> value="2">Độc giả</option>
+            <option <?php if($dataedit->Id_Quyen == '3'){echo("selected");}?> value="3">Tác giả</option>
+            <option <?php if($dataedit->Id_Quyen == '4'){echo("selected");}?> value="3">CTV</option>
         </select><br><br>
 
         <!-- <label>

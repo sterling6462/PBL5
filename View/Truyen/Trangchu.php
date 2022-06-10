@@ -93,8 +93,8 @@
                     break;
     
                     }
-    case 3:{?>
-                    <select name="tacgia" onchange="javascript:handleSelect(this)">
+    case 4:{?>
+                    <select name="CTV" onchange="javascript:handleSelect(this)">
                         <option>Quyen cua cong tac vien</option>
                         <option value="index.php?controller=user&action=list">Quan ly user</option>
                         <option value="index.php?controller=admin&action=danh_sach_chuong">Quan ly chuong</option>

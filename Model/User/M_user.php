@@ -47,6 +47,7 @@ class m_user
         $sql="SELECT * FROM user ";
         $this->execute($sql);
         // if($this->result)
+        $users=array();
         // {
             $i=1;
             while($data=mysqli_fetch_array($this->result))
@@ -66,6 +67,22 @@ class m_user
             
         //}
         return $users;
+    }
+    public function getuseredit($id)
+    {
+        
+        // {
+            $i=1;
+            $users=array();
+            $users=$this->travelistuser();
+            for($i=1;$i<=sizeof($users);$i++)
+            {
+                if($users[$i]->Id_User==$id)
+                {
+                    return $users[$i];
+                }
+
+            }
     }
     public function getalluser($table)
     {

@@ -48,7 +48,7 @@
                         
                         $_SESSION["id_quyen"] =$quyen['Id_Quyen'];
                         $_SESSION["id_currentUser"] = $quyen['Id_User'];
-                        echo '<script language="javascript">alert("Đăng nhâp thành công!"); window.location="index.php?controller=truyen&action=trangchu";</script>';
+                        echo '<script language="javascript">alert("Đăng nhâp thành công!"); window.location="index.php?controller=user&action=trangchu";</script>';
                         
 
                     }
@@ -115,7 +115,7 @@
                 }
         //        $id=1000;
                 $table="user";
-                $dataedit=$db->getusertheoid($table,$id);
+                $dataedit=$db->getuseredit($id);
                
 
                 if(isset($_POST['edituser']))
