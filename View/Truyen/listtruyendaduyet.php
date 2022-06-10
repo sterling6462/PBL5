@@ -39,7 +39,7 @@
 <body>
 
     <form class="danhsachtruyen" method="POST">
-        <h3>Danh sách truyện chờ duyệt</h3>
+        <h3>Danh sách truyện đã duyệt</h3>
         <table>
             <thead>
                 <tr>

@@ -30,6 +30,22 @@ class m_chuong2
         $this->result=$this->conn->query($sql);
         return $this->result;
     }
+    public function getChuongByIdTruyen($idtruyen){
+        $sql = "SELECT * from Chuong WHERE Id_Truyen='$idtruyen'  ";
+        $i= 0 ;
+        $rs = mysqli_query($this->conn, $sql);
+        $chuong = array();
+        while($row = mysqli_fetch_array($rs)){
+                  $idchuong = $row['Id_Chuong'];
+                  $idtruyen =  $row['Id_Truyen'];
+                  $chuongso = $row['Chuongso'];
+                  $chuongten =  $row['Chuongten'];
+                  $noidung =  $row['Noidung'];
+                  $chuong[$i] = new E_chuong($idchuong, $idtruyen, $chuongso, $chuongten, $noidung );
+                  $i++;
+        }
+        return $chuong;
+    }
     public function getChuong($idchuong)
         {
             $sql = "SELECT * from Chuong WHERE Id_Chuong='$idchuong'  ";

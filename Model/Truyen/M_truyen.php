@@ -191,6 +191,28 @@ class m_truyen
            $rs = mysqli_query($this->conn, $sql);
            return $rs->num_rows;
        }
+       public function getTruyenByNguoidang($idnguoidang){
+          $sql = "SELECT * FROM truyen WHERE Id_User = '$idnguoidang'";
+          $i= 0 ;
+                 $rs = mysqli_query($this->conn, $sql);
+                 $truyen = array();
+                 while($row = mysqli_fetch_array($rs)){
+                           $idtruyen = $row['Id_Truyen'];
+                           $idloai =  $row['Id_Loai'];
+                           $iduser = $row['Id_User'];
+                           $tentruyen =  $row['Tentruyen'];
+                           $tinhtrang =  $row['Tinhtrang'];
+                           $tacgia =  $row['Tacgia'];
+                           $gioithieu =  $row['Gioithieu'];
+                           $ngaydang =  $row['Ngaydang'];
+                           $hinhdaidien = $row['Hinhdaidien'];
+                           $duyet =  $row['Duyet'];
+                           $truyen[$i] = new e_truyen($idtruyen,$idloai,$iduser, $tentruyen, $tinhtrang, $tacgia, $gioithieu, $ngaydang, $hinhdaidien,0, $duyet );
+                           $i++;
+                 }
+             return $truyen;
+       }
+       
 }
 
 ?>

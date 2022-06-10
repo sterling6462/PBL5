@@ -19,6 +19,12 @@ switch($action){
                     break;
           }
           case 'list':{
+                 if(isset($_GET['idtruyen'])){
+                  $idtruyen=$_GET['idtruyen'];
+                  $danhsachchuong = array();
+                  $danhsachchuong = $db->getChuongByIdTruyen($idtruyen);
+                  require_once('View/Chuong/danh_sach_chuong.php');
+                 }
                   break;
           }
           case 'detail':{
@@ -33,7 +39,6 @@ switch($action){
                     $truyen=$dbtruyen->getTruyen($idtruyen);
                     $idchuong = $_GET['idchuong'];
                     $chuong = $db->getChuong($idchuong);
-                    $idtruyen = $_GET['idtruyen'] ;
                     $db->tangluotxem($idtruyen);
                     
                 }

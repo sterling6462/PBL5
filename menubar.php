@@ -1,34 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Web</title>
-    <meta charset="UTF-8">
-    <link rel="icon" href="685681.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="PBL5/Trangchu.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="CSS/Trangchu.css">
-
-<body>
-    <style>
-
-    </style>
-    <!-- 
-    <?php   
-        $link=mysqli_connect("localhost","root","") or die("khong the ket noi den co so du lieu");
-	    mysqli_select_db($link,"pbl5_1");
-	    $sql="SELECT * FROM truyen where Duyet=1";
-	    $result=mysqli_query($link,$sql);
-
-
-        $sql1="SELECT * FROM loaitruyen";
-        $result1=mysqli_query($link,$sql1);
-    ?> -->
-    <section id="nav">
+<section id="nav">
         <div>
 
             <ul>
@@ -125,9 +95,9 @@
 
                 </div>
                 <div class="navbar-end">
-                    <a class="dki" href="controller=user&action=add">Đăng kí</a>
+                    <a class="dki" href="http://localhost/PBL5_1/index.php?controller=user&action=add">Đăng kí</a>
                     <a>/</a>
-                    <a class="dnhap" href="controller=user&action=login">Đăng
+                    <a class="dnhap" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
                         nhập</a>
                 </div>
             </ul>
@@ -168,25 +138,3 @@
             </div>
             <center>
     </section>
-    <section class="truyens">
-        <?php for($i=0;$i<sizeof($itemtruyen);$i++){
-            
-                $ten=$itemtruyen[$i]->Tentruyen;?>
-        <section class="truyen">
-            <section class="img"><img src="<?=$itemtruyen[$i]->Hinhdaidien?>"></section>
-            <section class="name"><a
-                    href="index.php?controller=truyen&action=detail&idtruyen=<?php echo $itemtruyen[$i]->Id_Truyen;?>"><?=$itemtruyen[$i]->Tentruyen?>
-                </a>
-            </section>
-            <a href="">
-                <? echo $ten?>
-            </a>
-        </section>
-        <?php }?>
-    </section>
-    <section id="nav3">
-    </section>
-</body>
-</head>
-
-</html>
