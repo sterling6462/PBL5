@@ -113,6 +113,14 @@ class m_chuong2
        $chuongtruoc = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
        return $chuongtruoc;
    }
+   public function updateChuong($idchuong,$chuongten,$noidung,$chuongso){
+    $sql = "UPDATE chuong SET Chuongten = '$chuongten', Noidung = '$noidung', Chuongso = '$chuongso'  WHERE Id_Chuong = '$idchuong'";
+    $rs = mysqli_query($this->conn, $sql);
+   }
+   public function addChuong($idtruyen,$chuongso,$chuongten,$noidung){
+    $sql = "INSERT INTO chuong(Id_Truyen,Chuongso,Chuongten,Noidung) VALUES('$idtruyen','$chuongso','$chuongten','$noidung')";
+    $rs = mysqli_query($this->conn, $sql);
+   }
 }
 
 ?>

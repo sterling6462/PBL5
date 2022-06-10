@@ -1,42 +1,92 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="CSS/Edit_user.css">
-</head>
-<?php
+<!DOCTYPE html>
+<html lang="en">
+          <head>
+                    <meta charset="UTF-8">
+                    <title>Sửa chương</title>
+                    <style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
 
 
-?>
 
-<form action="" method="POST">
-    <div class="container">
-        <h1>FORM EDIT USER</h1>
-        <p>Xin hãy nhập biểu mẫu bên dưới để chỉnh sửa.</p>
-        <hr>
-        <label for="Id_Chuong"><b>Id Chuong</b></label>
-        <input type="text" name="Id_Chuonng" value="<?php echo $dataeditchuong['Id_Chuong']; ?>" required readonly><br>
-        <label for="Id_Truyen"><b>Id Truyen</b></label>
-        <input type="text" name="Id_Truyen" value="<?php echo $dataeditchuong['Id_Truyen']; ?>" required><br><br>
-        <label for="Chuongso"><b>Chuong so</b></label>
-        <input type="text" name="Chuongso" value="<?php echo $dataeditchuong['Chuongso']; ?>" required>
-        <label for="Chuongten"><b>Chuong ten</b></label>
-        <input type="text" name="Chuongten" value="<?php echo $dataeditchuong['Chuongten']; ?>" required>
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
 
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
 
-        <!-- <label for="Noidung"><b>Noi dung</b></label>
-        <input type="text" name="Noidung" value="<?php echo $dataeditchuong['Noidung']; ?>" required> -->
-        <textarea name="Noidung" rows="5" cols="100" class="auto_height" oninput="auto_height(this)" require>
-            <?php echo $dataeditchuong['Noidung']; ?>
-        </textarea>
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-
-
-
-        <br><br>
-
-        <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Nhớ Đăng Nhập
-        </label> -->
-        <div class="clearfix">
-            <button type="submit" class="edituser" name="editchuong" value="edit">Edit User</button>
-        </div>
-    </div>
-</form>
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+          </head>
+          <body>
+                    <div >
+                               <h3>Edit chương</h3>
+                              <form action=" " method="POST" enctype="multipart/form-data">
+                                        <table>
+                                                    <tr>
+                                                            <td>Chương số</td>
+                                                            <td><input type="text" name="chuongso" placeholder="Chương số" value="<?= $chuong->Chuongso ?>"/></td>
+                                                  </tr>
+                                                  <tr>
+                                                            <td>Tiêu đề</td>
+                                                            <td><input type="text" name="chuongten" placeholder="Chương tên" value="<?= $chuong->Chuongten ?>"/></td>
+                                                  </tr>
+                                                  <tr>
+                                                            <td>Nội dung</td>
+                                                            <td><input type="text" name="noidung" placeholder="Nội dung" value="<?= $chuong->Noidung ?>" /></td>
+                                                  </tr>
+                                                            <td><input type="submit" name="capnhat" value="Cập nhật"></td>
+                                                  </tr>
+                                        </table>
+                              </form>
+                    
+                    </div>
+          </body>
+</html>
