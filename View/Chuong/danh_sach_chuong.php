@@ -74,7 +74,7 @@
                     ?>
                 <tr>
                     <td><?=$danhsachchuong[$i]->Chuongso   ?></td>
-                    <td><a href="index.php?controller=chuong&action=edit&idtruyen=<?= $idtruyen?>&idchuong=<?=$danhsachchuong[$i]->Chuongso?>"><?=$danhsachchuong[$i]->Chuongten  ?></a></td>
+                    <td><a href="index.php?controller=chuong&action=edit&idtruyen=<?= $idtruyen?>&idchuong=<?=$danhsachchuong[$i]->Id_Chuong?>"><?=$danhsachchuong[$i]->Chuongten  ?></a></td>
                 </tr>
           
                 <?php $stt++; } ?>
