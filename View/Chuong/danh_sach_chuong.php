@@ -33,22 +33,23 @@
         background-color: #04AA6D;
         color: white;
     }
-    .btnthemchuong:link,
-.btnthemchuong:visited {
-  background-color: green;
-  color: white;
-  padding: 10px 22px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
 
-.btnthemchuong:hover,
-.btnthemchuong:active {
-  background-color: green;
-}
+    .btnthemchuong:link,
+    .btnthemchuong:visited {
+        background-color: green;
+        color: white;
+        padding: 10px 22px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .btnthemchuong:hover,
+    .btnthemchuong:active {
+        background-color: green;
+    }
     </style>
 </head>
 
@@ -56,8 +57,8 @@
 
     <form class="danhsachtruyen" method="POST">
         <h3>Danh sách chương của truyện</h3>
-        <a class="btnthemchuong"
-                        href="index.php?controller=chuong&action=add&idtruyen=<?= $idtruyen?>">Thêm chương mới</a>
+        <a class="btnthemchuong" href="index.php?controller=chuong&action=add&idtruyen=<?= $idtruyen?>">Thêm chương
+            mới</a>
         <table>
             <thead>
                 <tr>
@@ -74,9 +75,11 @@
                     ?>
                 <tr>
                     <td><?=$danhsachchuong[$i]->Chuongso   ?></td>
-                    <td><a href="index.php?controller=chuong&action=edit&idtruyen=<?= $idtruyen?>&idchuong=<?=$danhsachchuong[$i]->Id_Chuong?>"><?=$danhsachchuong[$i]->Chuongten  ?></a></td>
+                    <td><a
+                            href="index.php?controller=chuong&action=edit&idtruyen=<?= $idtruyen?>&idchuong=<?=$danhsachchuong[$i]->Id_Chuong?>"><?=$danhsachchuong[$i]->Chuongten  ?></a>
+                    </td>
                 </tr>
-          
+
                 <?php $stt++; } ?>
             </tbody>
         </table>

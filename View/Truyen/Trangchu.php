@@ -16,18 +16,10 @@
 <body>
     <style>
 
+
+
     </style>
-    <!-- 
-    <?php   
-        $link=mysqli_connect("localhost","root","") or die("khong the ket noi den co so du lieu");
-	    mysqli_select_db($link,"pbl5_1");
-	    $sql="SELECT * FROM truyen where Duyet=1";
-	    $result=mysqli_query($link,$sql);
 
-
-        $sql1="SELECT * FROM loaitruyen";
-        $result1=mysqli_query($link,$sql1);
-    ?> -->
     <section id="nav">
         <div>
 
@@ -46,14 +38,16 @@
                     <?php
                     
                     $quyen=$_SESSION["id_quyen"] . "<br>";
+                    $quyen1=(int)$quyen;
 
-                    if ($quyen=='')
+                    if ($quyen1=='')
                     {
                         echo "Chúc bạn đọc truyện vui vẻ <3!!!!";
+                        echo $quyen;
                     }
                     else
                     {
-                    switch ($quyen)
+                    switch ($quyen1)
                     {
                         case 1: { ?>
                     <select name="admin" onchange="javascript:handleSelect(this)">
@@ -77,9 +71,10 @@
                     case 3:{?>
                     <select name="tacgia" onchange="javascript:handleSelect(this)">
                         <option>Quyen cua tac gia </option>
-                        <option value="index.php?controller=user&action=list">Quản lý user</option>
                         <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chuong</option>
                         <option value="index.php?controller=truyen&action=add">Thêm truyện</option>
+                        <option value="index.php?controller=truyen&action=truyendadang">Quản lý truyện đã đăng</option>
+
                     </select>
 
                     <script type="text/javascript">
@@ -125,9 +120,9 @@
 
                 </div>
                 <div class="navbar-end">
-                    <a class="dki" href="controller=user&action=add">Đăng kí</a>
+                    <a class="dki" href="http://localhost/PBL5_1/index.php?controller=user&action=add">Đăng kí</a>
                     <a>/</a>
-                    <a class="dnhap" href="controller=user&action=login">Đăng
+                    <a class="dnhap" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
                         nhập</a>
                 </div>
             </ul>
@@ -168,25 +163,41 @@
             </div>
             <center>
     </section>
-    <section class="truyens">
-        <?php for($i=0;$i<sizeof($itemtruyen);$i++){
+    <div class="truyenss">
+        <div class="tieude">
+            <h2>=>>>>TRUYỆN</h2>
+
+
+            <section class="truyens">
+                <?php for($i=0;$i<sizeof($itemtruyen);$i++){
             
                 $ten=$itemtruyen[$i]->Tentruyen;?>
-        <section class="truyen">
-            <section class="img"><img src="<?=$itemtruyen[$i]->Hinhdaidien?>"></section>
-            <section class="name"><a
-                    href="index.php?controller=truyen&action=detail&idtruyen=<?php echo $itemtruyen[$i]->Id_Truyen;?>"><?=$itemtruyen[$i]->Tentruyen?>
-                </a>
+                <section class="truyen">
+                    <section class="img"><img src="<?=$itemtruyen[$i]->Hinhdaidien?>"></section>
+                    <section class="name"><a
+                            href="index.php?controller=truyen&action=detail&idtruyen=<?php echo $itemtruyen[$i]->Id_Truyen;?>"><?=$itemtruyen[$i]->Tentruyen?>
+                        </a>
+                    </section>
+                    <a href="">
+                        <? echo $ten?>
+                    </a>
+                </section>
+                <?php }?>
             </section>
-            <a href="">
-                <? echo $ten?>
-            </a>
-        </section>
-        <?php }?>
-    </section>
-    <section id="nav3">
-    </section>
+        </div><br />
+        <div class="theodoi">
+            <h2>=>>>>TRUYỆN THEO DÕI</h2>
+
+            <section id="nav3">
+            </section><br>
+        </div><br>
+
 </body>
 </head>
+<footer>
+
+
+
+</footer>
 
 </html>

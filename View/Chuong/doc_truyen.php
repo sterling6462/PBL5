@@ -17,85 +17,86 @@
 
 <body>
 
+
     <div id="chapter-big-container" class="container chapter">
         <div class="row">
             <div class="col-xs-12" style="margin-top:30px ;">
-                <h1 href="#" class="truyen-title" "><?php echo $truyen->Tentruyen;  ?></h1>
+                <h1 href="#" class="truyen-title"><?php echo $truyen->Tentruyen;  ?></h1>
                 <!-- ten truyen -->
                 <a href=" #" class="truyen-title" title="<?php echo $value['Tentruyen']?>"></a>
-                    <h2>
-                        <a href="#" class="chapter-title" title="Chuong 1: AAAAAAAAAA">
-                            <!-- <?php echo $value['chuong']['ten']?> -->
-                            <span class="chapter-text"><span><?php  echo $chuong->Chuongso;?></span>
-                            </span><?php  echo $chuong->Chuongten  ?>
-                        </a>
-                    </h2>
-                    <hr class="chapter-start">
-                    <div class="chapter-nav text-center" id="chapter-nav-top">
-                        <div class="btn-group">
-                            <a class="btn btn-success btn-chapter-nav" href="index.php?controller=chuong&action=doc_truyen&idchuong=<?php  
-                            echo $chuongtruoc -> Id_Chuong ;
-                            ?>" title="Không có chương trước" id="prev_chap" data-cid="">
-                                <span class="hidden-xs"><i class="bi bi-chevron-left"></i> Chương </span>trước
-                            </a>
-                            <button type="button" class="btn btn-success btn-chapter-nav chapter_jump">
-                                <i class="bi bi-list"></i>
-                            </button>
-                            <a class="btn btn-success btn-chapter-nav" href="index.php?controller=chuong&action=doc_truyen&idchuong=<?php  
-                            echo $chuongsau -> Id_Chuong ;
-                            ?>" title="Chương 2" id="next_chap" data-cid="436265">
-                                <span class="hidden-xs">Chương tiếp <i class="bi bi-chevron-right"></i> </span>
-                            </a>
-                        </div>
+                <h2>
+                    <a href="#" class="chapter-title" title="Chuong 1: AAAAAAAAAA">
+                        <!-- <?php echo $value['chuong']['ten']?> -->
+                        <span class="chapter-text"><span><?php  echo $chuong->Chuongso;?></span>
+                        </span><?php  echo $chuong->Chuongten  ?>
+                    </a>
+                </h2>
+                <hr class="chapter-start">
+                <div class="chapter-nav text-center" id="chapter-nav-top">
+                    <div class="btn-group">
+
+                        <button type="button" class="btn btn-success btn-chapter-nav chapter_jump">
+                            <i class="bi bi-list"></i>
+                        </button>
+                        <?php if($idchuong>=2&&$idchuong<$kt)
+                        {
+                        $chuongtruoc=$idchuong-1;
+                        $chuongsau=$idchuong+1;
+                        }
+                        else 
+                        {
+                            $chuongtruoc=1;
+                            $chuongsau=$kt; 
+                        }
+                      
+                        ?>
+                        <a class="btn btn-success btn-chapter-nav"
+                            href="index.php?controller=chuong&action=doc_truyen&idtruyen=<?php echo $truyen->Id_Truyen; ?>&idchuong=<?php echo $chuongtruoc?>">Chuong
+                            truoc</a>
+                        <a class="btn btn-success btn-chapter-nav"
+                            href="index.php?controller=chuong&action=doc_truyen&idtruyen=<?php echo $truyen->Id_Truyen; ?>&idchuong=<?php echo $chuongsau?>">Chuong
+                            sau</a>
+
+                    </div>
+                </div>
+
+                <div class="group_story text-center"
+                    style="font-weight: bold ; padding:0 5px 0 5px; display:inline-block; text-align:center !important;">
+                    <div class="bg-info col-xs-12 text-center box-notice mr-box" style="padding: 8px;"> <a href="#"
+                            target="_blank"> Hello user <span style="color:#e30c0c"><?php echo $ten; ?>
+                            </span>Đọc truyện vui vẻ nha</a>
                     </div>
 
-                    <div class="group_story text-center"
-                        style="font-weight: bold ; padding:0 5px 0 5px; display:inline-block; text-align:center !important;">
-                        <div class="bg-info col-xs-12 text-center box-notice mr-box" style="padding: 8px;"> <a href="#"
-                                target="_blank"> Co gai cưa đổ chàng trai <span style="color:#e30c0c">người thừa
-                                    kế</span>cả tập đoàn tài phiệt</a>
+
+                    <hr class="chapter-end">
+                    <div class="chapter-c" id="chapter-c">
+                        <div class="visible-md  visible-lg ads-responsive incontent-ad" id="ads-chapter-pc-top"
+                            align="center" style="height:90px"></div>
+                        <p class="text-break">day la noi dung
+                            <?php  echo $chuong->Noidung;?>
+                        </p>
+
+                        <!-- <p><?php echo $value['chuong']['noidung'] ?> < </p> -->
+
+                    </div>
+                    <hr class="chapter-end" id="chapter-end-bot">
+                    <div class="chapter-nav text-center" id="chapter-nav-bot">
+                        <div class="btn-group text-center">
+                            <a class="btn btn-success btn-chapter-nav"
+                                href="index.php?controller=chuong&action=doc_truyen&idtruyen=<?php echo $truyen->Id_Truyen; ?>&idchuong=<?php echo $chuongtruoc?>">Chuong
+                                truoc</a>
+                            <a class="btn btn-success btn-chapter-nav"
+                                href="index.php?controller=chuong&action=doc_truyen&idtruyen=<?php echo $truyen->Id_Truyen; ?>&idchuong=<?php echo $chuongsau?>">Chuong
+                                sau</a>
                         </div>
-                        <div class="bg-info col-xs-12 text-center box-notice mr-box" style="padding: 8px;"> <a href="#"
-                                target="_blank"> Ngu 1 giac day bong thay minh co 2 con va 1 ong chong <span
-                                    style="color:#e30c0c">AAAA</span>Hiiii</a>
-                        </div>
-
-                        <hr class="chapter-end">
-                        <div class="chapter-c" id="chapter-c">
-                            <div class="visible-md  visible-lg ads-responsive incontent-ad" id="ads-chapter-pc-top"
-                                align="center" style="height:90px"></div>
-                            <p class="text-break">day la noi dung
-                                <?php  echo $chuong->Noidung;?>
-                            </p>
-
-                            <!-- <p><?php echo $value['chuong']['noidung'] ?> < </p> -->
-
-                        </div>
-                        <hr class="chapter-end" id="chapter-end-bot">
-                        <div class="chapter-nav text-center" id="chapter-nav-bot">
-                            <div class="btn-group text-center">
-                                <a href="javascript:void(0)" title="Khong co chuong truoc"
-                                    class="btn btn-success btn-chaper-nav disabled" id="prev_chap" data-cid="">
-                                    <span class="glyphicon glyphicon-chervon-left"></span>
-                                    <span class="hidden-xs">Chuong</span> truoc
-                                </a>
-                                <button type="button" class="btn btn-success btn-chapter-nav chapter-jump">
-                                    <span class="glyphicon glyphicon-list-all"></span>
-                                </button>
-                                <a href="#" class="btn btn-success btn-chapter-nav" title="Chuong 2" id="next_chap"
-                                    data-cid="3356020">
-                                    <span class="hidden-xs"> Chuong </span> tiep
-                                    <span class="glyphicon glyphicon-chervon-right"></span>
-                                </a>
-                            </div>
 
 
 
-                            <div class="col-xs-12">
-                                <div class="row" id="fb-comment-chapter"></div>
-                            </div>
+                        <div class="col-xs-12">
+                            <div class="row" id="fb-comment-chapter"></div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
 </body>

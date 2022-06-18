@@ -61,11 +61,13 @@
                         //  $nguoidang = $db->getNguoiDang($danhsachtruyen[$i]->Id_User);
                         //  $loaitruyen = $db->getTheLoai($danhsachtruyen[$i]->Id_Loai);
                     ?>
-                    
+
                 <tr>
                     <td><?= $stt ?></td>
                     <td><img width="30" height="50" src="<?=$danhsachtruyen[$i]->Hinhdaidien?>"></td>
-                    <td><a href="index.php?controller=chuong&action=list&idtruyen=<?= $danhsachtruyen[$i]->Id_Truyen ?>"><?= $danhsachtruyen[$i]->Tentruyen ?></a></td>
+                    <td><a
+                            href="index.php?controller=chuong&action=list&idtruyen=<?= $danhsachtruyen[$i]->Id_Truyen ?>"><?= $danhsachtruyen[$i]->Tentruyen ?></a>
+                    </td>
                     <td><?=$danhsachtruyen[$i]->Id_Loai?></td>
                     <td><?=$danhsachtruyen[$i]->Tacgia ?></td>
                     <td><?=$danhsachtruyen[$i]->Id_User   ?></td>
@@ -73,7 +75,7 @@
                     <td><?=$danhsachtruyen[$i]->Ngaydang  ?></td>
 
                 </tr>
-          
+
                 <?php $stt++; } ?>
             </tbody>
         </table>

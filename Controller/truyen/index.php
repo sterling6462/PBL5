@@ -25,14 +25,37 @@ switch($action){
                 echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';
                }
         }
-          case 'edit':{
-                    require_once('View/Truyen/suatruyen.php');
-                    break;
-          }
-          case 'delete':{
-                    require_once('View/Truyen/xoatruyen.php');
-                    break;
-          }
+        case 'edit':{
+                if(isset($_GET['id'])){
+                      $id = $_GET['id'];
+                      $tblTable = "truyen";
+                      $dataId = $db->getDataId($tblTable,$id);
+                }
+                if(isset($_POST['updatetruyen'])){
+                      $tentruyen =  $_POST['tentruyen'];
+                      $id_loai =  $_POST['id_loai'];
+                      $tacgia =  $_POST['tacgia'];
+                      $gioithieu =  $_POST['gioithieu'];
+                      $hinhdaidien =  $_POST['hinhdaidien'];
+
+                      if($db->UpdateData($tentruyen, $id_loai, $tacgia, $gioithieu, $hinhdaidien,$id))
+                      header('location: index.php?controller=truyen&action=listdaduyet');
+                }
+                  require_once('View/Truyen/suatruyen.php');
+                  break;
+        }
+        case 'delete':{
+                  if(isset($_GET['id'])){
+                      $id = $_GET['id'];
+                      $tblTable = "truyen";
+                      $dataId = $db->getDataId($tblTable,$id);    
+                  }
+                  if($db->Delete($id,$tblTable)){
+                          header('location: index.php?controller=truyen&action=listdaduyet');
+                  }
+              //     require_once('View/Truyen/xoatruyen.php');
+                  break;
+        }
           case 'list':{
                     $danhsachtruyen = array();
                     $danhsachtruyen = $db->getTruyenchuaduyet('0');
