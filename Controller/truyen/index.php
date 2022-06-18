@@ -117,6 +117,17 @@ switch($action){
                     require_once('View/Truyen/detailtruyen.php');
                     break;
           }
+          case 'truyendadang':{
+                if(isset($_SESSION['id_currentUser'])){
+                        $idnguoidang = $_SESSION['id_currentUser'];
+                        $danhsachtruyen = array();
+                        $danhsachtruyen = $db->getTruyenByNguoidang($idnguoidang);
+                        require_once('View/Truyen/listtruyendadang.php');
+                        break;
+                }else{
+                        echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';
+                }
+          }
           default:{
                     $danhsachtruyen = array();
                     $danhsachtruyen = $db->getTruyenchuaduyet('1');

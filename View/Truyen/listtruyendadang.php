@@ -33,51 +33,47 @@
         background-color: #04AA6D;
         color: white;
     }
-
-    .btnthemchuong:link,
-    .btnthemchuong:visited {
-        background-color: green;
-        color: white;
-        padding: 10px 22px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        border-radius: 8px;
-        margin-bottom: 10px;
-    }
-
-    .btnthemchuong:hover,
-    .btnthemchuong:active {
-        background-color: green;
-    }
     </style>
 </head>
 
 <body>
 
     <form class="danhsachtruyen" method="POST">
-        <h3>Danh sách chương của truyện</h3>
-        <a class="btnthemchuong" href="index.php?controller=chuong&action=add&idtruyen=<?= $idtruyen?>">Thêm chương
-            mới</a>
+        <h3>Danh sách truyện đã duyệt</h3>
         <table>
             <thead>
                 <tr>
-                    <th>Chương số</th>
-                    <th>Tiêu đề</th>
+                    <th>Số thứ tự</th>
+                    <th>Hình đại diện</th>
+                    <th>Tên truyện</th>
+                    <th>Thể loại</th>
+                    <th>Tác giả</th>
+                    <th>Người đăng</th>
+                    <th>Giới thiệu</th>
+                    <th>Ngày đăng</th>
+
                 </tr>
             </thead>
             <tbody>
                 <?php
                     $stt = 1;
-                    for($i=0;$i<sizeof($danhsachchuong);$i++){
+                    for($i=0;$i<sizeof($danhsachtruyen);$i++){
                         //  $nguoidang = $db->getNguoiDang($danhsachtruyen[$i]->Id_User);
                         //  $loaitruyen = $db->getTheLoai($danhsachtruyen[$i]->Id_Loai);
                     ?>
+
                 <tr>
-                    <td><?=$danhsachchuong[$i]->Chuongso   ?></td>
+                    <td><?= $stt ?></td>
+                    <td><img width="30" height="50" src="<?=$danhsachtruyen[$i]->Hinhdaidien?>"></td>
                     <td><a
-                            href="index.php?controller=chuong&action=edit&idtruyen=<?= $idtruyen?>&idchuong=<?=$danhsachchuong[$i]->Id_Chuong?>"><?=$danhsachchuong[$i]->Chuongten  ?></a>
+                            href="index.php?controller=chuong&action=list&idtruyen=<?= $danhsachtruyen[$i]->Id_Truyen ?>"><?= $danhsachtruyen[$i]->Tentruyen ?></a>
                     </td>
+                    <td><?=$danhsachtruyen[$i]->Id_Loai?></td>
+                    <td><?=$danhsachtruyen[$i]->Tacgia ?></td>
+                    <td><?=$danhsachtruyen[$i]->Id_User   ?></td>
+                    <td><?=$danhsachtruyen[$i]->Gioithieu  ?></td>
+                    <td><?=$danhsachtruyen[$i]->Ngaydang  ?></td>
+
                 </tr>
 
                 <?php $stt++; } ?>

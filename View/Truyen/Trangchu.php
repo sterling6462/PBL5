@@ -38,15 +38,16 @@
                     <?php
                     
                     $quyen=$_SESSION["id_quyen"] . "<br>";
+                    $quyen1=(int)$quyen;
 
-                    if ($quyen=='')
+                    if ($quyen1=='')
                     {
                         echo "Chúc bạn đọc truyện vui vẻ <3!!!!";
                         echo $quyen;
                     }
                     else
                     {
-                    switch ($quyen)
+                    switch ($quyen1)
                     {
                         case 1: { ?>
                     <select name="admin" onchange="javascript:handleSelect(this)">
@@ -70,9 +71,10 @@
                     case 3:{?>
                     <select name="tacgia" onchange="javascript:handleSelect(this)">
                         <option>Quyen cua tac gia </option>
-                        <option value="index.php?controller=user&action=list">Quản lý user</option>
                         <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chuong</option>
                         <option value="index.php?controller=truyen&action=add">Thêm truyện</option>
+                        <option value="index.php?controller=truyen&action=truyendadang">Quản lý truyện đã đăng</option>
+
                     </select>
 
                     <script type="text/javascript">
