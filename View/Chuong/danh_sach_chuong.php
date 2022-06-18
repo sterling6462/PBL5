@@ -3,84 +3,62 @@
 
 <head>
     <meta charset="UTF-8">
-
-    <link href="View\style.css" rel="stylesheet">
-    <title>Duyệt truyện</title>
-
-    <style>
-    table {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-    }
-
-    table td,
-    table th {
-        border: 1px solid #ddd;
-        padding: 8px;
-    }
-
-
-
-    table tr:hover {
-        background-color: #ddd;
-    }
-
-    table th {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        text-align: left;
-        background-color: #04AA6D;
-        color: white;
-    }
-    .btnthemchuong:link,
-.btnthemchuong:visited {
-  background-color: green;
-  color: white;
-  padding: 10px 22px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
-
-.btnthemchuong:hover,
-.btnthemchuong:active {
-  background-color: green;
-}
-    </style>
+    <link rel="stylesheet" href="CSS/danh_sach_chuong.css">
+    <title>Danh sach chuong</title>
 </head>
 
 <body>
-
-    <form class="danhsachtruyen" method="POST">
-        <h3>Danh sách chương của truyện</h3>
-        <a class="btnthemchuong"
-                        href="index.php?controller=chuong&action=add&idtruyen=<?= $idtruyen?>">Thêm chương mới</a>
-        <table>
+    <div class="danhsach">
+        <h3>Danh sach chuong</h3>
+        <table border="1px">
             <thead>
                 <tr>
-                    <th>Chương số</th>
-                    <th>Tiêu đề</th>
+                    <th>STT</th>
+                    <th>Ten truyen</th>
+                    <th>Ten chuong</th>
+                    <th>Chuong so</th>
+                    <th>Noi dung</th>
+
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    $stt = 1;
-                    for($i=0;$i<sizeof($danhsachchuong);$i++){
-                        //  $nguoidang = $db->getNguoiDang($danhsachtruyen[$i]->Id_User);
-                        //  $loaitruyen = $db->getTheLoai($danhsachtruyen[$i]->Id_Loai);
-                    ?>
+                $stt = 1;
+                if (is_array($datachuong) || is_object($datachuong))
+                    {
+                        foreach ($datachuong as $value){ ?>
                 <tr>
-                    <td><?=$danhsachchuong[$i]->Chuongso   ?></td>
-                    <td><a href="index.php?controller=chuong&action=edit&idtruyen=<?= $idtruyen?>&idchuong=<?=$danhsachchuong[$i]->Chuongso?>"><?=$danhsachchuong[$i]->Chuongten  ?></a></td>
+                    <td><?php echo $stt; ?></td>
+                    <td><?php echo $value['Id_Truyen']; ?></td>
+                    <td><?php echo $value['Chuongten']; ?></td>
+                    <td><?php echo $value['Chuongso']; ?></td>
+                    <td><?php echo $value['Noidung']; ?></td>
+                    <td>
+                        <a
+                            href="index.php?controller=admin&action=edit_chuong&idchuong=<?php echo $value['Id_Chuong'];?>">Edit</a>
+                        <a
+                            href="index.php?controller=admin&action=delete_chuong&idchuong=<?php echo $value['Id_Chuong'];?>">Delete</a>
+                    </td>
+
                 </tr>
-          
-                <?php $stt++; } ?>
+                <?php
+                            $stt++;
+                        }
+                    }
+                    else // If $data was not an array, then this block is executed. 
+                    {
+                    echo "Unfortunately, an error occured.";
+                    }
+            ?>
+
+
+                <!-- <?php
+                echo "<pre>";
+                print_r($datachuong);
+                ?> -->
             </tbody>
         </table>
-    </form>
+    </div>
 </body>
 
 </html>

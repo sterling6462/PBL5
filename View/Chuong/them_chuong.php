@@ -1,92 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-          <head>
-                    <meta charset="UTF-8">
-                    <title>Thêm chương</title>
-                    <style>
-* {
-  box-sizing: border-box;
-}
 
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="CSS/them_chuong.css">
+    <title>Thêm chương</title>
+</head>
 
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
+<body>
+    <div class="content">
+        <div class="them_chuong">
+            <a href="index.php?controller=admin&action=danh_sach_chuong" class="list">Danh sach</a>
+            <h3>Them noi dung chuong</h3>
+            <form action="" method="POST">
+                <table>
+                    <tr>
+                        <td>Ten truyen/ID truyen</td>
+                        <td><input type="text" name="Id_Truyen" placeholder="Ten truyen"></td>
+                    </tr>
+                    <tr>
+                        <td>Ten chuong:</td>
+                        <td><input type="text" name="Chuongten" placeholder="Ten chuong"></td>
+                    </tr>
+                    <tr>
+                        <td>So chuong:</td>
+                        <td><input type="text" name="Chuongso" placeholder="So chuong"></td>
+                    </tr>
+                    <tr>
+                        <td>Noi dung:</td>
+                        <td><input type="text" name="Noidung" placeholder="noi dung"></td>
+                    </tr>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td><input type="submit" name="them_chuong" value="Them moi"></td>
+                    </tr>
+                </table>
+            </form>
 
-input[type=submit] {
-  background-color: #04AA6D;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-}
+            <?php
+                if(isset($thanhcong) && in_array('add_success',$thanhcong)){
+                    echo "<p style='color:green;text-align:center'> Them thanh cong</p>";
+                }
+            ?>
+        </div>
+    </div>
+</body>
 
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-
-
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
-</style>
-          </head>
-          <body>
-                    <div >
-                               <h3>Thêm chương</h3>
-                              <form action=" " method="POST" enctype="multipart/form-data">
-                                        <table>
-                                                    <tr>
-                                                            <td>Chương số</td>
-                                                            <td><input type="text" name="chuongso" placeholder="Chương số" /></td>
-                                                  </tr>
-                                                  <tr>
-                                                            <td>Tiêu đề</td>
-                                                            <td><input type="text" name="chuongten" placeholder="Chương tên" /></td>
-                                                  </tr>
-                                                  <tr>
-                                                            <td>Nội dung</td>
-                                                            <td><input type="text" name="noidung" placeholder="Nội dung" /></td>
-                                                  </tr>
-                                                            <td><input type="submit" name="themchuong" value="Thêm chương"></td>
-                                                  </tr>
-                                        </table>
-                              </form>
-                    
-                    </div>
-          </body>
 </html>

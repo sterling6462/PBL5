@@ -191,28 +191,58 @@ class m_truyen
            $rs = mysqli_query($this->conn, $sql);
            return $rs->num_rows;
        }
-       public function getTruyenByNguoidang($idnguoidang){
-          $sql = "SELECT * FROM truyen WHERE Id_User = '$idnguoidang'";
-          $i= 0 ;
-                 $rs = mysqli_query($this->conn, $sql);
-                 $truyen = array();
-                 while($row = mysqli_fetch_array($rs)){
-                           $idtruyen = $row['Id_Truyen'];
-                           $idloai =  $row['Id_Loai'];
-                           $iduser = $row['Id_User'];
-                           $tentruyen =  $row['Tentruyen'];
-                           $tinhtrang =  $row['Tinhtrang'];
-                           $tacgia =  $row['Tacgia'];
-                           $gioithieu =  $row['Gioithieu'];
-                           $ngaydang =  $row['Ngaydang'];
-                           $hinhdaidien = $row['Hinhdaidien'];
-                           $duyet =  $row['Duyet'];
-                           $truyen[$i] = new e_truyen($idtruyen,$idloai,$iduser, $tentruyen, $tinhtrang, $tacgia, $gioithieu, $ngaydang, $hinhdaidien,0, $duyet );
-                           $i++;
-                 }
-             return $truyen;
-       }
-       
+       public function getDataId($table,$id)
+    {
+        $sql = "SELECT * FROM $table WHERE Id_Truyen = '$id'";
+        $this->execute($sql);
+        if($this->num_rows()!=0){
+           $data = mysqli_fetch_array($this->result); 
+        }
+        else{
+            $data = 0;
+        }
+        return $data;
+    }
+    public function num_rows()
+    {
+        if($this->result){
+            $num = mysqli_num_rows($this->result);
+        }
+        else{
+            $num = 0;
+        }
+        return $num;
+    }
+    public function getTruyendaduyet($duyet){
+        $sql = "SELECT * FROM Truyen WHERE Duyet = '$duyet'";
+        $i= 0 ;
+        $rs = mysqli_query($this->conn, $sql);
+        $truyen = array();
+        while($row = mysqli_fetch_array($rs)){
+                  $idtruyen = $row['Id_Truyen'];
+                  $idloai =  $row['Id_Loai'];
+                  $iduser = $row['Id_User'];
+                  $tentruyen =  $row['Tentruyen'];
+                  $tinhtrang =  $row['Tinhtrang'];
+                  $tacgia =  $row['Tacgia'];
+                  $gioithieu =  $row['Gioithieu'];
+                  $ngaydang =  $row['Ngaydang'];
+                  $hinhdaidien = $row['Hinhdaidien'];
+                  $duyet =  $row['Duyet'];
+                  $truyen[$i] = new e_truyen($idtruyen,$idloai,$iduser, $tentruyen, $tinhtrang, $tacgia, $gioithieu, $ngaydang, $hinhdaidien,0, $duyet );
+                  $i++;
+        }
+    return $truyen;
+}
+public function UpdateData( $tentruyen,$idloai,$tacgia,$gioithieu,$hinhdaidien,$id ){
+    // $sql = "UPDATE truyen SET tentruyen = '$tentruyen',idloai = '$idloai',tacgia = '$tacgia' ,gioithieu = '$gioithieu' ,hinhdaidien = '$hinhdaidien' WHERE Id_Truyen = '$id'";
+    $sql = "UPDATE truyen SET Id_Loai = '$idloai', Tentruyen = '$tentruyen', Tacgia = '$tacgia', Gioithieu = '$gioithieu', Hinhdaidien = '$hinhdaidien' WHERE truyen.`Id_Truyen` = '$id'";
+    return $this->execute($sql);
+    }
+    public function Delete($id,$table){
+        $sql = "DELETE FROM truyen WHERE truyen.`Id_Truyen` = '$id' ";
+        return $this->execute($sql);
+    }
 }
 
 ?>

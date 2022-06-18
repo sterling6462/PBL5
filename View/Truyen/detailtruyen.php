@@ -94,6 +94,7 @@
         <table id="tablechuong">
             <thead>
                 <tr>
+                    <th>STT</th>
                     <th>Chương số</th>
                     <th>Tên</th>
                     <th> Ngày cập nhật</th>
@@ -101,17 +102,20 @@
             </thead>
             <tbody>
                 <?php
+                $i=1;
                 if (is_array($danhsachchuong) || is_object($danhsachchuong))
                     {
                         foreach ($danhsachchuong as $value){ ?>
                 <tr>
+                    <td><?php echo $i ;?></td>
                     <td><a style="text-decoration: none;color:black;"
-                            href="index.php?controller=chuong&action=doc_truyen&idtruyen=<?= $value->Id_Truyen?>&idchuong=<?= $value->Id_Chuong?>">Chapter
+                            href="index.php?controller=chuong&action=doc_truyen&idtruyen=<?= $value->Id_Truyen?>&idchuong=<?= $i?>">Chapter
                             <?=$value->Chuongso ?></a></td>
                     <td><?=$value->Chuongten ?></td>
                     <td>NA</td>
                 </tr>
                 <?php
+                $i++;
                         }
                     }
             ?>

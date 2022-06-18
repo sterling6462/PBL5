@@ -51,6 +51,8 @@
                     <th>Người đăng</th>
                     <th>Giới thiệu</th>
                     <th>Ngày đăng</th>
+                    <th>Sửa</th>
+                    <th>Xóa</th>
 
                 </tr>
             </thead>
@@ -62,19 +64,28 @@
                         //  $loaitruyen = $db->getTheLoai($danhsachtruyen[$i]->Id_Loai);
                     ?>
                 <tr>
-                    <td><?= $stt ?></td>
+                    <td><?= $stt++ ?></td>
                     <td><img width="30" height="50" src="<?=$danhsachtruyen[$i]->Hinhdaidien?>"></td>
                     <td><?= $danhsachtruyen[$i]->Tentruyen ?></td>
                     <td><?=$danhsachtruyen[$i]->Id_Loai?></td>
-                    <td><?=$danhsachtruyen[$i]->Tacgia ?></td>
-                    <td><?=$danhsachtruyen[$i]->Id_User   ?></td>
-                    <td><?=$danhsachtruyen[$i]->Gioithieu  ?></td>
-                    <td><?=$danhsachtruyen[$i]->Ngaydang  ?></td>
+                    <td><?=$danhsachtruyen[$i]->Tacgia?></td>
+                    <td><?=$danhsachtruyen[$i]->Id_User?></td>
+                    <td><?=$danhsachtruyen[$i]->Gioithieu?></td>
+                    <td><?=$danhsachtruyen[$i]->Ngaydang?></td>
+                    <td>
+                        <a
+                            href="index.php?controller=truyen&action=edit&id=<?php echo $danhsachtruyen[$i]->Id_Truyen; ?>">Sửa</a>
 
+                    </td>
+                    <td>
+                        <a
+                            href="index.php?controller=truyen&action=delete&id=<?php echo $danhsachtruyen[$i]->Id_Truyen; ?>">Xóa</a>
+                    </td>
                 </tr>
-                <?php $stt++; } ?>
+                <?php } ?>
             </tbody>
         </table>
+        <a class="btn btn-primary" href="index.php?controller=truyen&action=add">Thêm truyện</a>
     </form>
 </body>
 

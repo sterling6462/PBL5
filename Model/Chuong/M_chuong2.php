@@ -30,22 +30,6 @@ class m_chuong2
         $this->result=$this->conn->query($sql);
         return $this->result;
     }
-    public function getChuongByIdTruyen($idtruyen){
-        $sql = "SELECT * from Chuong WHERE Id_Truyen='$idtruyen'  ";
-        $i= 0 ;
-        $rs = mysqli_query($this->conn, $sql);
-        $chuong = array();
-        while($row = mysqli_fetch_array($rs)){
-                  $idchuong = $row['Id_Chuong'];
-                  $idtruyen =  $row['Id_Truyen'];
-                  $chuongso = $row['Chuongso'];
-                  $chuongten =  $row['Chuongten'];
-                  $noidung =  $row['Noidung'];
-                  $chuong[$i] = new E_chuong($idchuong, $idtruyen, $chuongso, $chuongten, $noidung );
-                  $i++;
-        }
-        return $chuong;
-    }
     public function getChuong($idchuong)
         {
             $sql = "SELECT * from Chuong WHERE Id_Chuong='$idchuong'  ";
@@ -113,14 +97,28 @@ class m_chuong2
        $chuongtruoc = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
        return $chuongtruoc;
    }
-   public function updateChuong($idchuong,$chuongten,$noidung,$chuongso){
-    $sql = "UPDATE chuong SET Chuongten = '$chuongten', Noidung = '$noidung', Chuongso = '$chuongso'  WHERE Id_Chuong = '$idchuong'";
-    $rs = mysqli_query($this->conn, $sql);
+   public function getchuongtheoidtruyen($idtruyen)
+   {
+       $sql = "SELECT * from Chuong WHERE Id_Truyen='$idtruyen'  ";
+        $this->execute($sql);
+        $chuongs=array();
+        $i=1;
+        while($obj=mysqli_fetch_array($this->result))
+        {
+           
+            $idchuong =$obj['Id_Chuong'];
+            $idtruyen =  $obj['Id_Truyen'];
+            $chuongso = $obj['Chuongso'];
+            $chuongten =  $obj['Chuongten'];
+            $noidung =  $obj['Noidung'];
+            $chuongs[$i] = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
+            $i++;
+
+        }
+   
+    return $chuongs;
    }
-   public function addChuong($idtruyen,$chuongso,$chuongten,$noidung){
-    $sql = "INSERT INTO chuong(Id_Truyen,Chuongso,Chuongten,Noidung) VALUES('$idtruyen','$chuongso','$chuongten','$noidung')";
-    $rs = mysqli_query($this->conn, $sql);
-   }
+
 }
 
 ?>
