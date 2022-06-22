@@ -157,10 +157,6 @@
                 require_once('');
                 break;
             }
-        case 'test':
-            {
-               
-            }
         default:
             {
               

@@ -39,7 +39,7 @@
 <body>
 
     <form class="danhsachtruyen" method="POST">
-        <h3>Danh sách truyện đã duyệt</h3>
+        <h3>Danh sách truyện đã đăng</h3>
         <table>
             <thead>
                 <tr>
@@ -68,9 +68,9 @@
                     <td><a
                             href="index.php?controller=chuong&action=list&idtruyen=<?= $danhsachtruyen[$i]->Id_Truyen ?>"><?= $danhsachtruyen[$i]->Tentruyen ?></a>
                     </td>
-                    <td><?=$danhsachtruyen[$i]->Id_Loai?></td>
+                    <td><?=$db->getTheLoai($danhsachtruyen[$i]->Id_Loai) ?></td>
                     <td><?=$danhsachtruyen[$i]->Tacgia ?></td>
-                    <td><?=$danhsachtruyen[$i]->Id_User   ?></td>
+                    <td><?=$db->getNguoiDang($danhsachtruyen[$i]->Id_User) ?></td>
                     <td><?=$danhsachtruyen[$i]->Gioithieu  ?></td>
                     <td><?=$danhsachtruyen[$i]->Ngaydang  ?></td>
 

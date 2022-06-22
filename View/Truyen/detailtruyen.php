@@ -30,6 +30,7 @@
         </ul>
 
     </div>
+    <a href="index.php?controller=user&action=trangchu">Quay về trang chủ</a>
     <div class="truyen">
         <h2><?= $truyen->Tentruyen ?></h2>
         <div class="detail">
@@ -71,8 +72,15 @@
                 </table>
                 <div style="display:flex; ">
                     <a class="btntheodoi"
-                        href="index.php?controller=truyen&action=detail&idtruyen=<?= $truyen->Id_Truyen?>&theodoi=">Theo
-                        dõi</a>
+                        href="index.php?controller=truyen&action=detail&idtruyen=<?= $truyen->Id_Truyen?>&theodoi=">
+                       <?php 
+                            if($isFollowed) {
+                                echo 'Bỏ theo dõi';
+                            } else {
+                                echo 'Theo dõi' ;
+                            }
+                        ?>
+                    </a>
                     <p style="font-size: medium; color:dimgray"> &nbsp;&nbsp;<?=$luottheodoi?> người đã theo dõi </p>
                 </div>
                 <div>
@@ -112,7 +120,7 @@
                             href="index.php?controller=chuong&action=doc_truyen&idtruyen=<?= $value->Id_Truyen?>&idchuong=<?= $i?>">Chapter
                             <?=$value->Chuongso ?></a></td>
                     <td><?=$value->Chuongten ?></td>
-                    <td>NA</td>
+                    <td><?=$value->Ngaycapnhat ?></td>
                 </tr>
                 <?php
                 $i++;

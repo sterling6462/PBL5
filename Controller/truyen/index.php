@@ -76,10 +76,9 @@ switch($action){
                 require_once('View/Truyen/listtruyendaduyet.php');
                 break;
           case 'detail':{
-              
+                   
                     if(isset($_GET['idtruyen'])){
-                            $idtruyen=$_GET['idtruyen'];   
-                            $idcurrentUser =  $_SESSION['id_currentUser'];
+                             $idtruyen = $_GET['idtruyen'];   
                               $truyen = $db->getTruyen($idtruyen);
                               $theloai = $db->getTheLoai($truyen->Id_Loai);
                               $luottheodoi = $db->getLuotTheoDoiByIDTruyen($idtruyen);
@@ -90,9 +89,18 @@ switch($action){
                               }
                               $danhsachchuong = array();
                               $danhsachchuong = $db->getChuong($idtruyen);
-                              if(isset($_GET['theodoi'])){
-                                      $db->theodoi($idcurrentUser, $idtruyen);
-                            
+                              $isFollowed = false;
+                              if (isset ($_GET['theodoi']) ) {
+                                     if (isset($_SESSION['id_currentUser'])) {
+                                        $idcurrentUser = $_SESSION['id_currentUser'];
+                                        $isFollowed = $db->isTruyenWasFollowed($idtruyen, $idcurrentUser);
+                                        if ( $db->theodoi($idcurrentUser, $idtruyen) == true) {
+                                                echo header("refresh: 0");
+                                                $luottheodoi = $db->getLuotTheoDoiByIDTruyen($idtruyen);
+                                             }
+                                     } else {
+                                        echo '<script>alert("Chức năng này yêu cầu đăng nhập")</script>';
+                                     }
                               }
                               $cmts=array();
                               $cmts=$dbcmt->getlistcmttheoid($idtruyen);
@@ -122,7 +130,20 @@ switch($action){
                         $idnguoidang = $_SESSION['id_currentUser'];
                         $danhsachtruyen = array();
                         $danhsachtruyen = $db->getTruyenByNguoidang($idnguoidang);
+                        
                         require_once('View/Truyen/listtruyendadang.php');
+                        break;
+                }else{
+                        echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';
+                }
+          }
+          case 'truyendangtheodoi':{
+                if(isset($_SESSION['id_currentUser'])){
+                        $idcurrentUser = $_SESSION['id_currentUser'];
+                        $danhsachtruyen = array();
+                        $danhsachtruyen = $db->getTruyenDaTheoDoi($idcurrentUser);
+                        
+                        require_once('View/Truyen/listtruyendatheodoi.php');
                         break;
                 }else{
                         echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';

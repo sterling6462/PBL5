@@ -67,9 +67,9 @@
                     <td><?= $stt++ ?></td>
                     <td><img width="30" height="50" src="<?=$danhsachtruyen[$i]->Hinhdaidien?>"></td>
                     <td><?= $danhsachtruyen[$i]->Tentruyen ?></td>
-                    <td><?=$danhsachtruyen[$i]->Id_Loai?></td>
+                    <td><?=$db->getTheLoai($danhsachtruyen[$i]->Id_Loai)?></td>
                     <td><?=$danhsachtruyen[$i]->Tacgia?></td>
-                    <td><?=$danhsachtruyen[$i]->Id_User?></td>
+                    <td><?=$db->getNguoiDang($danhsachtruyen[$i]->Id_User)?></td>
                     <td><?=$danhsachtruyen[$i]->Gioithieu?></td>
                     <td><?=$danhsachtruyen[$i]->Ngaydang?></td>
                     <td>

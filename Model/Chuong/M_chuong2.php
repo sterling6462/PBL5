@@ -41,7 +41,8 @@ class m_chuong2
             $chuongso = $obj->Chuongso;
             $chuongten =  $obj->Chuongten;
             $noidung =  $obj->Noidung;
-            $chuong = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
+            $ngaycapnhat = $obj->Ngaycapnhat;
+            $chuong = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung, $ngaycapnhat);
          return $chuong;
         }
         public function tangluotxem($idtruyen){
@@ -70,7 +71,8 @@ class m_chuong2
            $chuongso = $obj->Chuongso;
            $chuongten =  $obj->Chuongten;
            $noidung =  $obj->Noidung;
-           $chuongsau = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
+           $ngaycapnhat = $obj->Ngaycapnhat;
+           $chuongsau = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung, $ngaycapnhat);
            return $chuongsau;
        } catch (\Throwable $th) {
            //throw $th;
@@ -94,7 +96,8 @@ class m_chuong2
        $chuongten =  $obj->Chuongten;
        $noidung =  $obj->Noidung;
        echo $idchuong;
-       $chuongtruoc = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
+       $ngaycapnhat = $obj->Ngaycapnhat;
+       $chuongtruoc = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung,$ngaycapnhat);
        return $chuongtruoc;
    }
    public function getchuongtheoidtruyen($idtruyen)
@@ -111,7 +114,8 @@ class m_chuong2
             $chuongso = $obj['Chuongso'];
             $chuongten =  $obj['Chuongten'];
             $noidung =  $obj['Noidung'];
-            $chuongs[$i] = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung);
+            $ngaycapnhat = $obj['Ngaycapnhat'];
+            $chuongs[$i] = new e_chuong($idchuong,$idtruyen,$chuongso,$chuongten,$noidung,$ngaycapnhat);
             $i++;
 
         }
@@ -137,7 +141,8 @@ class m_chuong2
               $chuongso = $row['Chuongso'];
               $chuongten =  $row['Chuongten'];
               $noidung =  $row['Noidung'];
-              $chuong[$i] = new E_chuong($idchuong, $idtruyen, $chuongso, $chuongten, $noidung );
+              $ngaycapnhat = $row['Ngaycapnhat'];
+              $chuong[$i] = new E_chuong($idchuong, $idtruyen, $chuongso, $chuongten, $noidung, $ngaycapnhat );
               $i++;
     }
     return $chuong;

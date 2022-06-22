@@ -161,7 +161,8 @@ class m_truyen
                   $chuongso = $row['Chuongso'];
                   $chuongten =  $row['Chuongten'];
                   $noidung =  $row['Noidung'];
-                  $chuong[$i] = new E_chuong($idchuong, $idtruyen, $chuongso, $chuongten, $noidung );
+                  $ngaycapnhat =$row['Ngaycapnhat'];
+                  $chuong[$i] = new E_chuong($idchuong, $idtruyen, $chuongso, $chuongten, $noidung, $ngaycapnhat );
                   $i++;
         }
         return $chuong;
@@ -192,7 +193,7 @@ class m_truyen
            return $rs->num_rows;
        }
        public function getTruyenByNguoidang($idnguoidang){
-          $sql = "SELECT * FROM truyen WHERE Id_User = '$idnguoidang'";
+          $sql = "SELECT * FROM truyen WHERE Id_User = '$idnguoidang' AND Duyet = 1";
           $i= 0 ;
                  $rs = mysqli_query($this->conn, $sql);
                  $truyen = array();
@@ -212,7 +213,26 @@ class m_truyen
                  }
              return $truyen;
        }
-       
+       public function getTruyenDaTheoDoi($idUser){
+        $sql = "SELECT Id_Truyen FROM theodoi WHERE Id_User = '$idUser' ";
+        $rs =  mysqli_query($this->conn, $sql);
+        $truyen = array();
+        $i = 0;
+        while($row = mysqli_fetch_array($rs)){
+                  $idtruyen = $row['Id_Truyen'];
+                  $truyen[$i] = $this->getTruyen($idtruyen);
+                  $i++;
+        }
+        return $truyen;
+       }
+       public function isTruyenWasFollowed($idTruyen, $idUser){
+        $sql = "SELECT * FROM theodoi WHERE Id_Truyen = '$idTruyen' AND Id_User = '$idUser' ";
+        $rs = mysqli_query($this->conn, $sql);
+         if($rs->num_rows){
+            return true;
+         }
+         return false;
+       }
 }
 
 ?>

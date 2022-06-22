@@ -50,11 +50,23 @@
     .btnthemchuong:active {
         background-color: green;
     }
+    a {
+    background-color: #f1f1f1;
+  color: black;
+  text-decoration: none;
+  display: inline-block;
+  padding: 8px 16px;
+}
+
+a:hover {
+  background-color: #ddd;
+  color: black;
+}
     </style>
 </head>
 
 <body>
-
+    <a href="index.php?controller=truyen&action=truyendadang">&laquo;Quay lại</a>
     <form class="danhsachtruyen" method="POST">
         <h3>Danh sách chương của truyện</h3>
         <a class="btnthemchuong" href="index.php?controller=chuong&action=add&idtruyen=<?= $idtruyen?>">Thêm chương

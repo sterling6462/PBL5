@@ -8,35 +8,38 @@
     <title>Duyệt truyện</title>
 
     <style>
-table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+    table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-table td, table th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
+    table td,
+    table th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
 
 
 
-table tr:hover {background-color: #ddd;}
+    table tr:hover {
+        background-color: #ddd;
+    }
 
-table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
+    table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+    </style>
 </head>
 
 <body>
 
     <form class="danhsachtruyen" method="POST">
-        <h3>Danh sách truyện chờ duyệt</h3>
+        <h3>Danh sách truyện đã đăng</h3>
         <table>
             <thead>
                 <tr>
@@ -58,22 +61,24 @@ table th {
                         //  $nguoidang = $db->getNguoiDang($danhsachtruyen[$i]->Id_User);
                         //  $loaitruyen = $db->getTheLoai($danhsachtruyen[$i]->Id_Loai);
                     ?>
+
                 <tr>
                     <td><?= $stt ?></td>
                     <td><img width="30" height="50" src="<?=$danhsachtruyen[$i]->Hinhdaidien?>"></td>
-                    <td><?= $danhsachtruyen[$i]->Tentruyen ?></td>
-                    <td><?=$db->getTheLoai($danhsachtruyen[$i]->Id_Loai)?></td>
+                    <td><a
+                            href="index.php?controller=truyen&action=detail&idtruyen=<?= $danhsachtruyen[$i]->Id_Truyen ?>"><?= $danhsachtruyen[$i]->Tentruyen ?></a>
+                    </td>
+                    <td><?=$db->getTheLoai($danhsachtruyen[$i]->Id_Loai) ?></td>
                     <td><?=$danhsachtruyen[$i]->Tacgia ?></td>
-                    <td><?=$db->getNguoiDang($danhsachtruyen[$i]->Id_User)  ?></td>
+                    <td><?=$db->getNguoiDang($danhsachtruyen[$i]->Id_User)   ?></td>
                     <td><?=$danhsachtruyen[$i]->Gioithieu  ?></td>
                     <td><?=$danhsachtruyen[$i]->Ngaydang  ?></td>
-                    <td><input type="checkbox" value="<?=$danhsachtruyen[$i]->Id_Truyen ?>" name="checklist[ ]"></td>
+
                 </tr>
+
                 <?php $stt++; } ?>
             </tbody>
         </table>
-
-        <input type="submit" value="Duyệt" name="duyettruyen" onsubmit="window.location.reload();">
     </form>
 </body>
 

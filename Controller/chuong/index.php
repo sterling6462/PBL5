@@ -58,15 +58,14 @@ if(isset($_POST['capnhat'])){
               
 
                 if(isset($_GET['idchuong'])&&isset($_GET['idtruyen'])){
-                  $ten=$_SESSION['ten'];
-                  $idtruyen=$_GET['idtruyen'];
+                   $ten=$_SESSION['ten'];
+                   $idtruyen=$_GET['idtruyen'];
                     $truyen=$dbtruyen->getTruyen($idtruyen);
                     $idchuong = $_GET['idchuong'];
                     $chuongs=array();
                     $chuongs = $db->getchuongtheoidtruyen($idtruyen);
                     $kt=sizeof($chuongs);
                     $chuong=$chuongs[$idchuong];
-
                     $idtruyen = $_GET['idtruyen'] ;
                     $db->tangluotxem($idtruyen);
                     

@@ -5,6 +5,7 @@
                     <title>Đăng truyện</title>
           </head>
           <body>
+                    <a href="index.php?controller=user&action=trangchu">Quay về trang chủ</a>
                     <div class = "themtruyen">
                                <h3>Đăng truyện của bạn</h3>
                               <form action=" " method="POST" enctype="multipart/form-data">
