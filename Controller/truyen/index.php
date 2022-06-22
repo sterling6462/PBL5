@@ -130,7 +130,20 @@ switch($action){
                         $idnguoidang = $_SESSION['id_currentUser'];
                         $danhsachtruyen = array();
                         $danhsachtruyen = $db->getTruyenByNguoidang($idnguoidang);
+                        
                         require_once('View/Truyen/listtruyendadang.php');
+                        break;
+                }else{
+                        echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';
+                }
+          }
+          case 'truyendangtheodoi':{
+                if(isset($_SESSION['id_currentUser'])){
+                        $idcurrentUser = $_SESSION['id_currentUser'];
+                        $danhsachtruyen = array();
+                        $danhsachtruyen = $db->getTruyenDaTheoDoi($idcurrentUser);
+                        
+                        require_once('View/Truyen/listtruyendatheodoi.php');
                         break;
                 }else{
                         echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';

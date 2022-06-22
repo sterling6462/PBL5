@@ -30,6 +30,7 @@
         </ul>
 
     </div>
+    <a href="index.php?controller=user&action=trangchu">Quay về trang chủ</a>
     <div class="truyen">
         <h2><?= $truyen->Tentruyen ?></h2>
         <div class="detail">
@@ -119,7 +120,7 @@
                             href="index.php?controller=chuong&action=doc_truyen&idtruyen=<?= $value->Id_Truyen?>&idchuong=<?= $i?>">Chapter
                             <?=$value->Chuongso ?></a></td>
                     <td><?=$value->Chuongten ?></td>
-                    <td>NA</td>
+                    <td><?=$value->Ngaycapnhat ?></td>
                 </tr>
                 <?php
                 $i++;
