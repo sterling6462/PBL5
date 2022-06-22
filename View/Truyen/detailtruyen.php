@@ -71,8 +71,15 @@
                 </table>
                 <div style="display:flex; ">
                     <a class="btntheodoi"
-                        href="index.php?controller=truyen&action=detail&idtruyen=<?= $truyen->Id_Truyen?>&theodoi=">Theo
-                        dõi</a>
+                        href="index.php?controller=truyen&action=detail&idtruyen=<?= $truyen->Id_Truyen?>&theodoi=">
+                       <?php 
+                            if($isFollowed) {
+                                echo 'Bỏ theo dõi';
+                            } else {
+                                echo 'Theo dõi' ;
+                            }
+                        ?>
+                    </a>
                     <p style="font-size: medium; color:dimgray"> &nbsp;&nbsp;<?=$luottheodoi?> người đã theo dõi </p>
                 </div>
                 <div>

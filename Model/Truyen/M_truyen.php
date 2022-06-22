@@ -192,7 +192,7 @@ class m_truyen
            return $rs->num_rows;
        }
        public function getTruyenByNguoidang($idnguoidang){
-          $sql = "SELECT * FROM truyen WHERE Id_User = '$idnguoidang'";
+          $sql = "SELECT * FROM truyen WHERE Id_User = '$idnguoidang' AND Duyet = 1";
           $i= 0 ;
                  $rs = mysqli_query($this->conn, $sql);
                  $truyen = array();
@@ -212,7 +212,14 @@ class m_truyen
                  }
              return $truyen;
        }
-       
+       public function isTruyenWasFollowed($idTruyen, $idUser){
+        $sql = "SELECT * FROM theodoi WHERE Id_Truyen = '$idTruyen' AND Id_User = '$idUser' ";
+        $rs = mysqli_query($this->conn, $sql);
+         if($rs->num_rows){
+            return true;
+         }
+         return false;
+       }
 }
 
 ?>
