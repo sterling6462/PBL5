@@ -155,8 +155,6 @@
             </div>
             <center>
     </section>
-
-    <!-- <script src="jquery.js"></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
@@ -167,48 +165,69 @@
                 type: 'POST',
                 data: 'request=' + value,
                 beforeSend: function() {
-                    $("#container").html('Working...');
+                    $("#danh-sach-truyen").html('Working...');
                 },
                 success: function(data) {
-                    $("#container").html(data);
+                    $("#danh-sach-truyen").html(data);
                 },
             });
         });
     });
     </script>
 
-    <div id="container">
-        <?php
-      $conn = mysqli_connect('localhost','root','','pbl5_1');
-      $query="SELECT * from truyen";
-      $output=mysqli_query($conn,$query);
-echo '<section class="truyens" >';
-      while($fetch = mysqli_fetch_assoc($output))
-    {
-    echo '<section class="truyen">';
-        echo '<section class="img"><img src="'.$fetch['Hinhdaidien'].'"></section>';
-        echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen='.$fetch['Id_Truyen'].'">'.$fetch['Tentruyen'].'</a></section>';
-    echo '</section>';
-     };
-echo '</section>';
-?>
+    <div class="container" style="  display: flex; flex-direction: column; color:#ffffff">
+        <div id="danh-sach-truyen">
+            <h2>DANH SÁCH TRUYỆN</h2>
+            <?php
+            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
+            $query = "SELECT * from truyen";
+            $output = mysqli_query($conn, $query);
+            echo '<section class="truyens" >';
+            while ($fetch = mysqli_fetch_assoc($output)) {
+                echo '<section class="truyen">';
+                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
+                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
+                echo '</section>';
+            };
+            echo '</section>';
+            ?>
+        </div>
+        <div class="truyen-theo-doi">
+            <h2>TRUYỆN THEO DÕI</h2>
+            <?php
+            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
+            $query = "SELECT * from truyen";
+            $output = mysqli_query($conn, $query);
+            echo '<section class="truyens" >';
+            while ($fetch = mysqli_fetch_assoc($output)) {
+                echo '<section class="truyen">';
+                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
+                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
+                echo '</section>';
+            };
+            echo '</section>';
+            ?>
+        </div>
+        <div class="bang-xep-hang">
+            <h2>BẢNG XẾP HẠNG</h2>
+            <?php
+            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
+            $query = "SELECT * from truyen";
+            $output = mysqli_query($conn, $query);
+            echo '<section class="truyens" >';
+            while ($fetch = mysqli_fetch_assoc($output)) {
+                echo '<section class="truyen">';
+                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
+                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
+                echo '</section>';
+            };
+            echo '</section>';
+            ?>
+        </div>
     </div>
-
-
-    <div class="theodoi">
-        <h2>=>>>>TRUYỆN THEO DÕI</h2>
-
-        <section id="nav3">
-        </section><br>
-    </div><br>
-
 </body>
 </head>
 <footer>
-
-
-
 </footer>
-
 
 </html>
