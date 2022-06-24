@@ -19,25 +19,19 @@
 
     </style>
     <!-- 
-    <?php   
-        $link=mysqli_connect("localhost","root","") or die("khong the ket noi den co so du lieu");
-	    mysqli_select_db($link,"pbl5_1");
-	    $sql="SELECT * FROM truyen where Duyet=1";
-	    $result=mysqli_query($link,$sql);
+    <?php
+    $link = mysqli_connect("localhost", "root", "") or die("khong the ket noi den co so du lieu");
+    mysqli_select_db($link, "pbl5_1");
+    $sql = "SELECT * FROM truyen where Duyet=1";
+    $result = mysqli_query($link, $sql);
 
 
-        $sql1="SELECT * FROM loaitruyen";
-        $result1=mysqli_query($link,$sql1);
+    $sql1 = "SELECT * FROM loaitruyen";
+    $result1 = mysqli_query($link, $sql1);
     ?> -->
-
-
-
     </style>
-
-
     <section id="nav">
         <div>
-
             <ul>
                 <li><a class="navbar-item" href="/">
                         <img width="50" height="50"
@@ -51,22 +45,15 @@
                 <li><a href="#truyenmoi">Truyện mới</a></li>
                 <div class="dropdown">
                     <?php
-                    $iduser=$_SESSION["id_currentUser"];
-                    
-                    $quyen=$_SESSION["id_quyen"] . "<br>";
-
-                    if ($quyen=='')
-                    {
+                    $iduser = $_SESSION["id_currentUser"];
+                    $quyen = $_SESSION["id_quyen"] . "<br>";
+                    if ($quyen == '') {
                         echo "Chúc bạn đọc truyện vui vẻ <3!!!!";
 
                         echo $quyen;
-
-                    }
-                    else
-                    {
-                    switch ($quyen)
-                    {
-                        case 1: { ?>
+                    } else {
+                        switch ($quyen) {
+                            case 1: { ?>
                     <select name="admin" onchange="javascript:handleSelect(this)">
                         <option>Quyền của admin</option>
                         <option value="index.php?controller=user&action=list">Quản lý user</option>
@@ -85,9 +72,9 @@
                     }
                     </script>
                     <?php
-                        break;
-                    }
-                    case 3:{?>
+                                    break;
+                                }
+                            case 3: { ?>
                     <select name="tacgia" onchange="javascript:handleSelect(this)">
                         <option>Quyen cua tac gia </option>
 
@@ -97,19 +84,15 @@
                         <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
                         </option>
                     </select>
-
                     <script type="text/javascript">
                     function handleSelect(elm) {
                         window.location = elm.value;
                     }
                     </script>
-
-
-                    <?php 
-                    break;
-    
-                    }
-    case 4:{?>
+                    <?php
+                                    break;
+                                }
+                            case 4: { ?>
                     <select name="CTV" onchange="javascript:handleSelect(this)">
                         <option>Quyen cua cong tac vien</option>
                         <option value="index.php?controller=user&action=list">Quan ly user</option>
@@ -117,46 +100,31 @@
                         <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
                         </option>
                     </select>
-
                     <script type="text/javascript">
                     function handleSelect(elm) {
                         window.location = elm.value;
                     }
                     </script>
-
-
-                    <?php 
-            break;
-            
-            }
-            case 2:
-            echo "Chuc ban doc truyen vui ve";
-            break;
-   
-            ?>
-
                     <?php
-            }
-        }
-?>
-
-
+                                    break;
+                                }
+                            case 2:
+                                echo "Chuc ban doc truyen vui ve";
+                                break;
+                                ?>
+                    <?php
+                        }
+                    }
+                    ?>
                 </div>
-
                 <div class="navbar-end">
                     <Label>Hello <?php
-                    if ($_SESSION["ten"]==null )
-                    echo "HELLO";
-                    else echo $_SESSION["ten"]; ?></Label>
-
-
-
+                                    if ($_SESSION["ten"] == null)
+                                        echo "HELLO";
+                                    else echo $_SESSION["ten"]; ?></Label>
                     <a class="dki" href="http://localhost/PBL5_1/index.php?controller=user&action=add">Đăng kí</a>
-
                     <a class="dnhap" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
                         nhập</a><br><br>
-
-
                 </div>
                 <div class="dxuat">
                     <a class="dxuat" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
@@ -189,8 +157,6 @@
             </div>
             <center>
     </section>
-
-    <!-- <script src="jquery.js"></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
@@ -201,48 +167,69 @@
                 type: 'POST',
                 data: 'request=' + value,
                 beforeSend: function() {
-                    $("#container").html('Working...');
+                    $("#danh-sach-truyen").html('Working...');
                 },
                 success: function(data) {
-                    $("#container").html(data);
+                    $("#danh-sach-truyen").html(data);
                 },
             });
         });
     });
     </script>
 
-    <div id="container">
-        <?php
-      $conn = mysqli_connect('localhost','root','','pbl5_1');
-      $query="SELECT * from truyen";
-      $output=mysqli_query($conn,$query);
-echo '<section class="truyens" >';
-      while($fetch = mysqli_fetch_assoc($output))
-    {
-    echo '<section class="truyen">';
-        echo '<section class="img"><img src="'.$fetch['Hinhdaidien'].'"></section>';
-        echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen='.$fetch['Id_Truyen'].'">'.$fetch['Tentruyen'].'</a></section>';
-    echo '</section>';
-     };
-echo '</section>';
-?>
+    <div class="container" style="  display: flex; flex-direction: column; color:#ffffff">
+        <div id="danh-sach-truyen">
+            <h2>DANH SÁCH TRUYỆN</h2>
+            <?php
+            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
+            $query = "SELECT * from truyen";
+            $output = mysqli_query($conn, $query);
+            echo '<section class="truyens" >';
+            while ($fetch = mysqli_fetch_assoc($output)) {
+                echo '<section class="truyen">';
+                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
+                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
+                echo '</section>';
+            };
+            echo '</section>';
+            ?>
+        </div>
+        <div class="truyen-theo-doi">
+            <h2>TRUYỆN THEO DÕI</h2>
+            <?php
+            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
+            $query = "SELECT * from truyen";
+            $output = mysqli_query($conn, $query);
+            echo '<section class="truyens" >';
+            while ($fetch = mysqli_fetch_assoc($output)) {
+                echo '<section class="truyen">';
+                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
+                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
+                echo '</section>';
+            };
+            echo '</section>';
+            ?>
+        </div>
+        <div class="bang-xep-hang">
+            <h2>BẢNG XẾP HẠNG</h2>
+            <?php
+            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
+            $query = "SELECT * from truyen";
+            $output = mysqli_query($conn, $query);
+            echo '<section class="truyens" >';
+            while ($fetch = mysqli_fetch_assoc($output)) {
+                echo '<section class="truyen">';
+                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
+                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
+                echo '</section>';
+            };
+            echo '</section>';
+            ?>
+        </div>
     </div>
-
-
-    <div class="theodoi">
-        <h2>=>>>>TRUYỆN THEO DÕI</h2>
-
-        <section id="nav3">
-        </section><br>
-    </div><br>
-
 </body>
 </head>
 <footer>
-
-
-
 </footer>
-
 
 </html>
