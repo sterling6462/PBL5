@@ -25,11 +25,14 @@ switch($action){
                 echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';
                }
         }
+
+         
+
         case 'edit':{
                 if(isset($_GET['id'])){
                       $id = $_GET['id'];
                       $tblTable = "truyen";
-                      $dataId = $db->getDataId($tblTable,$id);
+                      $dataId = $db->getTruyen($id);
                 }
                 if(isset($_POST['updatetruyen'])){
                       $tentruyen =  $_POST['tentruyen'];
@@ -39,7 +42,7 @@ switch($action){
                       $hinhdaidien =  $_POST['hinhdaidien'];
 
                       if($db->UpdateData($tentruyen, $id_loai, $tacgia, $gioithieu, $hinhdaidien,$id))
-                      header('location: index.php?controller=truyen&action=listdaduyet');
+                      header('location: index.php?controller=truyen&action=truyendadang');
                 }
                   require_once('View/Truyen/suatruyen.php');
                   break;
@@ -55,7 +58,8 @@ switch($action){
                   }
               //     require_once('View/Truyen/xoatruyen.php');
                   break;
-        }
+                }
+
           case 'list':{
                     $danhsachtruyen = array();
                     $danhsachtruyen = $db->getTruyenchuaduyet('0');
@@ -76,54 +80,54 @@ switch($action){
                 require_once('View/Truyen/listtruyendaduyet.php');
                 break;
           case 'detail':{
-                   
-                    if(isset($_GET['idtruyen'])){
-                             $idtruyen = $_GET['idtruyen'];   
-                              $truyen = $db->getTruyen($idtruyen);
-                              $theloai = $db->getTheLoai($truyen->Id_Loai);
-                              $luottheodoi = $db->getLuotTheoDoiByIDTruyen($idtruyen);
-                              if ($truyen->Tinhtrang == 1 ){
-                                      $tinhtrang = "Hoàn thành";
-                              }else{
-                                      $tinhtrang = "Chưa hoàn thành";
-                              }
-                              $danhsachchuong = array();
-                              $danhsachchuong = $db->getChuong($idtruyen);
-                              $isFollowed = false;
-                              if (isset ($_GET['theodoi']) ) {
-                                     if (isset($_SESSION['id_currentUser'])) {
-                                        $idcurrentUser = $_SESSION['id_currentUser'];
-                                        $isFollowed = $db->isTruyenWasFollowed($idtruyen, $idcurrentUser);
-                                        if ( $db->theodoi($idcurrentUser, $idtruyen) == true) {
-                                                echo header("refresh: 0");
-                                                $luottheodoi = $db->getLuotTheoDoiByIDTruyen($idtruyen);
-                                             }
-                                     } else {
-                                        echo '<script>alert("Chức năng này yêu cầu đăng nhập")</script>';
-                                     }
-                              }
-                              $cmts=array();
-                              $cmts=$dbcmt->getlistcmttheoid($idtruyen);
-                              $tenuser=array();
-                              for($i=1;$i<=sizeof($cmts);$i++)
-                              {
-                                      $tenuser[$i]=$dbuser->gettenusertheoid($cmts[$i]->Id_User);
-                              }
+              
+                if(isset($_GET['idtruyen'])){
+                        $idtruyen = $_GET['idtruyen'];   
+                         $truyen = $db->getTruyen($idtruyen);
+                         $theloai = $db->getTheLoai($truyen->Id_Loai);
+                         $luottheodoi = $db->getLuotTheoDoiByIDTruyen($idtruyen);
+                         if ($truyen->Tinhtrang == 1 ){
+                                 $tinhtrang = "Hoàn thành";
+                         }else{
+                                 $tinhtrang = "Chưa hoàn thành";
+                         }
+                         $danhsachchuong = array();
+                         $danhsachchuong = $db->getChuong($idtruyen);
+                         $isFollowed = false;
+                         if (isset ($_GET['theodoi']) ) {
+                                if (isset($_SESSION['id_currentUser'])) {
+                                   $idcurrentUser = $_SESSION['id_currentUser'];
+                                   $isFollowed = $db->isTruyenWasFollowed($idtruyen, $idcurrentUser);
+                                   if ( $db->theodoi($idcurrentUser, $idtruyen) == true) {
+                                           echo header("refresh: 0");
+                                           $luottheodoi = $db->getLuotTheoDoiByIDTruyen($idtruyen);
+                                        }
+                                } else {
+                                   echo '<script>alert("Chức năng này yêu cầu đăng nhập")</script>';
+                                }
+                         }
+                         $cmts=array();
+                         $cmts=$dbcmt->getlistcmttheoid($idtruyen);
+                         $tenuser=array();
+                         for($i=1;$i<=sizeof($cmts);$i++)
+                         {
+                                 $tenuser[$i]=$dbuser->gettenusertheoid($cmts[$i]->Id_User);
+                         }
 
-                              if(isset($_POST['addcmt']))
-                              {
+                         if(isset($_POST['addcmt']))
+                         {
 
-                                      $comment=$_POST['comment'];
-                                      
-                                      
-                                     if( $dbcmt->addcmt($idcurrentUser,$idtruyen,$comment)==true)
-                                     {
-                                        echo header("refresh: 1");
-                                     }
-                              }
-                    }
-                    require_once('View/Truyen/detailtruyen.php');
-                    break;
+                                 $comment=$_POST['comment'];
+                                 
+                                 
+                                if( $dbcmt->addcmt($idcurrentUser,$idtruyen,$comment)==true)
+                                {
+                                   echo header("refresh: 1");
+                                }
+                         }
+               }
+               require_once('View/Truyen/detailtruyen.php');
+               break;
           }
           case 'truyendadang':{
                 if(isset($_SESSION['id_currentUser'])){
@@ -149,6 +153,7 @@ switch($action){
                         echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';
                 }
           }
+
           default:{
                     $danhsachtruyen = array();
                     $danhsachtruyen = $db->getTruyenchuaduyet('1');

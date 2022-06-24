@@ -25,7 +25,7 @@
             <table>
                 <tr>
                     <td>Tên truyện</td>
-                    <td><input type="text" name="tentruyen" value="<?php echo $dataId['Tentruyen']?>"
+                    <td><input type="text" name="tentruyen" value="<?php echo $dataId->Tentruyen;?>"
                             placeholder="Tên truyện" /></td>
                 </tr>
                 <tr>
@@ -33,39 +33,39 @@
                     <td>
                         <select
                             name="id_loai" ">
-                                                                                <option <?php if($dataId['Id_Loai'] == '1'){echo("selected");}?> value="
+                                                                                <option <?php if($dataId->Id_Loai    == '1'){echo("selected");}?> value="
                             1">Thiếu nhi</option>
-                            <option <?php if($dataId['Id_Loai'] == '2'){echo("selected");}?> value="2">Trinh thám
+                            <option <?php if($dataId->Id_Loai == '2'){echo("selected");}?> value="2">Trinh thám
                             </option>
-                            <option <?php if($dataId['Id_Loai'] == '3'){echo("selected");}?> value="3">Tiểu thuyết
+                            <option <?php if($dataId->Id_Loai == '3'){echo("selected");}?> value="3">Tiểu thuyết
                             </option>
-                            <option <?php if($dataId['Id_Loai'] == '4'){echo("selected");}?> value="4">Kinh dị</option>
-                            <option <?php if($dataId['Id_Loai'] == '5'){echo("selected");}?> value="5">Viễn tưởng
+                            <option <?php if($dataId->Id_Loai == '4'){echo("selected");}?> value="4">Kinh dị</option>
+                            <option <?php if($dataId->Id_Loai == '5'){echo("selected");}?> value="5">Viễn tưởng
                             </option>
-                            <option <?php if($dataId['Id_Loai'] == '6'){echo("selected");}?> value="6">Tình cảm</option>
-                            <option <?php if($dataId['Id_Loai'] == '7'){echo("selected");}?> value="7">Học đường
+                            <option <?php if($dataId->Id_Loai == '6'){echo("selected");}?> value="6">Tình cảm</option>
+                            <option <?php if($dataId->Id_Loai == '7'){echo("selected");}?> value="7">Học đường
                             </option>
-                            <option <?php if($dataId['Id_Loai'] == '8'){echo("selected");}?> value="8">Hành động
+                            <option <?php if($dataId->Id_Loai == '8'){echo("selected");}?> value="8">Hành động
                             </option>
-                            <option <?php if($dataId['Id_Loai'] == '9'){echo("selected");}?> value="9">Kiếm hiệp
+                            <option <?php if($dataId->Id_Loai == '9'){echo("selected");}?> value="9">Kiếm hiệp
                             </option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>Tác giả</td>
-                    <td><input type="text" name="tacgia" value="<?php echo $dataId['Tacgia']?>" placeholder="Tác giả" />
+                    <td><input type="text" name="tacgia" value="<?php echo $dataId->Tacgia?>" placeholder="Tác giả" />
                     </td>
                 </tr>
                 <tr>
                     <td>Giới thiệu</td>
                     <td><textarea type="text" name="gioithieu" placeholder="Mô tả truyện" cols="70"
-                            rows="4"><?php echo $dataId['Gioithieu']?></textarea></td>
+                            rows="4"><?php echo $dataId->Gioithieu ;?></textarea></td>
                 </tr>
                 <tr>
                     <td>Ảnh đại diện</td>
                     <td><input name="hinhdaidien" id="hinhdaidien" type="text"
-                            value="<?php echo $dataId['Hinhdaidien']?>"
+                            value="<?php echo $dataId->Hinhdaidien ;?>"
                             placeholder="Paste link ảnh trong gg drive của bạn" /></td>
                 </tr>
                 <tr>

@@ -73,6 +73,11 @@
                     <td><?=$db->getNguoiDang($danhsachtruyen[$i]->Id_User) ?></td>
                     <td><?=$danhsachtruyen[$i]->Gioithieu  ?></td>
                     <td><?=$danhsachtruyen[$i]->Ngaydang  ?></td>
+                    <td>
+                        <a
+                            href="index.php?controller=truyen&action=edit&id=<?php echo $danhsachtruyen[$i]->Id_Truyen; ?>">Sửa</a>
+
+                    </td>
 
                 </tr>
 

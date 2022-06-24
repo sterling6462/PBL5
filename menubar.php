@@ -1,41 +1,4 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Web</title>
-    <meta charset="UTF-8">
-    <link rel="icon" href="685681.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,700&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="PBL5/Trangchu.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="CSS/Trangchu1.css">
-
-<body>
-    <style>
-
-
-    </style>
-    <!-- 
-    <?php   
-        $link=mysqli_connect("localhost","root","") or die("khong the ket noi den co so du lieu");
-	    mysqli_select_db($link,"pbl5_1");
-	    $sql="SELECT * FROM truyen where Duyet=1";
-	    $result=mysqli_query($link,$sql);
-
-
-        $sql1="SELECT * FROM loaitruyen";
-        $result1=mysqli_query($link,$sql1);
-    ?> -->
-
-
-
-    </style>
-
-
-    <section id="nav">
+<section id="nav">
         <div>
 
             <ul>
@@ -51,16 +14,12 @@
                 <li><a href="#truyenmoi">Truyện mới</a></li>
                 <div class="dropdown">
                     <?php
-                    $iduser=$_SESSION["id_currentUser"];
                     
                     $quyen=$_SESSION["id_quyen"] . "<br>";
 
                     if ($quyen=='')
                     {
                         echo "Chúc bạn đọc truyện vui vẻ <3!!!!";
-
-                        echo $quyen;
-
                     }
                     else
                     {
@@ -74,8 +33,6 @@
                         <option value="index.php?controller=binhluan&action=listbinhluan">Quản lý comment</option>
                         <option value="index.php?controller=truyen&action=list">Quản lý truyện chưa duyêt</option>
                         <option value="index.php?controller=truyen&action=listdaduyet">Quản lý truyện đã duyêt</option>
-                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
-                        </option>
 
                     </select>
 
@@ -90,12 +47,9 @@
                     case 3:{?>
                     <select name="tacgia" onchange="javascript:handleSelect(this)">
                         <option>Quyen cua tac gia </option>
-
-                        <!-- <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chuong</option> -->
+                        <option value="index.php?controller=user&action=list">Quản lý user</option>
+                        <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chuong</option>
                         <option value="index.php?controller=truyen&action=add">Thêm truyện</option>
-                        <option value="index.php?controller=truyen&action=truyendadang">Quản lý truyện đã đăng</option>
-                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
-                        </option>
                     </select>
 
                     <script type="text/javascript">
@@ -114,8 +68,6 @@
                         <option>Quyen cua cong tac vien</option>
                         <option value="index.php?controller=user&action=list">Quan ly user</option>
                         <option value="index.php?controller=admin&action=danh_sach_chuong">Quan ly chuong</option>
-                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
-                        </option>
                     </select>
 
                     <script type="text/javascript">
@@ -142,25 +94,11 @@
 
 
                 </div>
-
                 <div class="navbar-end">
-                    <Label>Hello <?php
-                    if ($_SESSION["ten"]==null )
-                    echo "HELLO";
-                    else echo $_SESSION["ten"]; ?></Label>
-
-
-
                     <a class="dki" href="http://localhost/PBL5_1/index.php?controller=user&action=add">Đăng kí</a>
-
+                    <a>/</a>
                     <a class="dnhap" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
-                        nhập</a><br><br>
-
-
-                </div>
-                <div class="dxuat">
-                    <a class="dxuat" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
-                        xuất</a>
+                        nhập</a>
                 </div>
             </ul>
 
@@ -172,15 +110,26 @@
                 <table class="bang">
                     <tr>
                         <th>Thể loại:</th>
+                        <th>Năm:</th>
                     </tr>
                     <tr>
                         <td>
-                            <select name="loaitruyen" class="form-control" id="fetchval">
-                                <option value="" class="theloai" disabled="" selected="">--Tất cả--</option>
-                                <option value="0" class="theloai">Thần thoại</option>
-                                <option value="1" class="theloai">Thiếu nhi</option>
-                                <option value="2" class="theloai">Trinh thám</option>
-                                <option value="3" class="theloai">Tiểu thuyết</option>
+                            <select name="orderby" class="form-control" id="vnkings_cat">
+                                <option class="theloai">--Tất cả--</option>
+                                <?php for($i=1;$i<=sizeof($item);$i++) {?>
+                                <option class="name"><?=$item[$i]->Tenloai?></option>
+                                <?php }?>
+                            </select>
+                        </td>
+
+                        <td>
+                            <select name="orderby" class="form-control" id="vnkings_cat">
+                                <option class="theloai">--Tất cả--</option>
+                                <option class="theloai" value="2018">Năm 2018 trở về trước</option>
+                                <option class="theloai" value="2019">Năm 2019</option>
+                                <option class="theloai" value="2020">Năm 2020</option>
+                                <option class="theloai" value="2021">Năm 2021</option>
+                                <option class="theloai" value="2022">Năm 2022</option>
                             </select>
                         </td>
 
@@ -189,60 +138,3 @@
             </div>
             <center>
     </section>
-
-    <!-- <script src="jquery.js"></script> -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $("#fetchval").on('change', function() {
-            var value = $(this).val();
-            $.ajax({
-                url: 'http://localhost/PBL5_1/View/Truyen/fetch.php',
-                type: 'POST',
-                data: 'request=' + value,
-                beforeSend: function() {
-                    $("#container").html('Working...');
-                },
-                success: function(data) {
-                    $("#container").html(data);
-                },
-            });
-        });
-    });
-    </script>
-
-    <div id="container">
-        <?php
-      $conn = mysqli_connect('localhost','root','','pbl5_1');
-      $query="SELECT * from truyen";
-      $output=mysqli_query($conn,$query);
-echo '<section class="truyens" >';
-      while($fetch = mysqli_fetch_assoc($output))
-    {
-    echo '<section class="truyen">';
-        echo '<section class="img"><img src="'.$fetch['Hinhdaidien'].'"></section>';
-        echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen='.$fetch['Id_Truyen'].'">'.$fetch['Tentruyen'].'</a></section>';
-    echo '</section>';
-     };
-echo '</section>';
-?>
-    </div>
-
-
-    <div class="theodoi">
-        <h2>=>>>>TRUYỆN THEO DÕI</h2>
-
-        <section id="nav3">
-        </section><br>
-    </div><br>
-
-</body>
-</head>
-<footer>
-
-
-
-</footer>
-
-
-</html>

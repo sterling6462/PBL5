@@ -48,14 +48,20 @@
                         
                         $_SESSION["id_quyen"] =$quyen['Id_Quyen'];
                         $_SESSION["id_currentUser"] = $quyen['Id_User'];
+
                         $_SESSION["ten"]=$ten;
+
                         echo '<script language="javascript">alert("Đăng nhâp thành công!"); window.location="index.php?controller=user&action=trangchu";</script>';
                         
 
                     }
                     else
                     {
+
+                        echo '<script language="javascript">alert("Đăng nhập thất bại !!! Vui lòng nhập lại !!"); window.location="index.php?controller=user&action=dangnhap";</script>';
+
                         echo '<script language="javascript">alert("Đăng nhập thất bại !!! Vui lòng nhập lại !!"); window.location="index.php?controller=user&action=login";</script>';
+
                     }
                 }
             }
@@ -131,7 +137,7 @@
                     
                     if($db->edituser($id,$Ten,$Ngaysinh,$Diachi,$Email,$Pass,$Gioitinh,$Quyen))
                     {   
-                        echo '<script language="javascript">alert("Chinh sua thanh cong user"); window.location="index.php?controller=user&action=list";</script>';
+                        echo '<script language="javascript">alert("Chinh sua thanh cong user"); window.location="index.php?controller=user&action=trangchu";</script>';
                         // header('location: index.php?action=list');
                     }
                    
@@ -156,6 +162,10 @@
 
                 require_once('');
                 break;
+            }
+        case 'test':
+            {
+               
             }
         default:
             {

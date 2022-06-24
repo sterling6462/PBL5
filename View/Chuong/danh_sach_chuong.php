@@ -50,18 +50,19 @@
     .btnthemchuong:active {
         background-color: green;
     }
-    a {
-    background-color: #f1f1f1;
-  color: black;
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 16px;
-}
 
-a:hover {
-  background-color: #ddd;
-  color: black;
-}
+    a {
+        background-color: #f1f1f1;
+        color: black;
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+
+    a:hover {
+        background-color: #ddd;
+        color: black;
+    }
     </style>
 </head>
 
