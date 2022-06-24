@@ -12,22 +12,17 @@
         rel="stylesheet">
     <link rel="stylesheet" href="PBL5/Trangchu.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="CSS/Trangchu1.css">
-
 <body>
     <style>
-
-
     </style>
     <!-- 
-    <?php
-    $link = mysqli_connect("localhost", "root", "") or die("khong the ket noi den co so du lieu");
-    mysqli_select_db($link, "pbl5_1");
-    $sql = "SELECT * FROM truyen where Duyet=1";
-    $result = mysqli_query($link, $sql);
-
-
-    $sql1 = "SELECT * FROM loaitruyen";
-    $result1 = mysqli_query($link, $sql1);
+    <?php   
+        $link=mysqli_connect("localhost","root","") or die("khong the ket noi den co so du lieu");
+	    mysqli_select_db($link,"pbl5_1");
+	    $sql="SELECT * FROM truyen where Duyet=1";
+	    $result=mysqli_query($link,$sql);
+        $sql1="SELECT * FROM loaitruyen";
+        $result1=mysqli_query($link,$sql1);
     ?> -->
     </style>
     <section id="nav">
@@ -45,90 +40,93 @@
                 <li><a href="#truyenmoi">Truyện mới</a></li>
                 <div class="dropdown">
                     <?php
-                    $iduser = $_SESSION["id_currentUser"];
-                    $quyen = $_SESSION["id_quyen"] . "<br>";
-                    if ($quyen == '') {
+                    $iduser=$_SESSION["id_currentUser"];
+                    $quyen=$_SESSION["id_quyen"] . "<br>";
+                    if ($quyen=='')
+                    {
                         echo "Chúc bạn đọc truyện vui vẻ <3!!!!";
-
-                        echo $quyen;
-                    } else {
-                        switch ($quyen) {
-                            case 1: { ?>
-                    <select name="admin" onchange="javascript:handleSelect(this)">
-                        <option>Quyền của admin</option>
-                        <option value="index.php?controller=user&action=list">Quản lý user</option>
-                        <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chương</option>
-                        <option value="index.php?controller=binhluan&action=listbinhluan">Quản lý comment</option>
-                        <option value="index.php?controller=truyen&action=list">Quản lý truyện chưa duyêt</option>
-                        <option value="index.php?controller=truyen&action=listdaduyet">Quản lý truyện đã duyêt</option>
-                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
-                        </option>
-
-                    </select>
-
-                    <script type="text/javascript">
-                    function handleSelect(elm) {
-                        window.location = elm.value;
                     }
-                    </script>
-                    <?php
-                                    break;
-                                }
-                            case 3: { ?>
-                    <select name="tacgia" onchange="javascript:handleSelect(this)">
-                        <option>Quyen cua tac gia </option>
+                    else
+                    {
+                    switch ($quyen)
+                    {
+                        case 1 : { ?>
+                                        <select name="admin" onchange="javascript:handleSelect(this)">
+                                            <option>Quyền của admin</option>
+                                            <option value="index.php?controller=user&action=list">Quản lý user</option>
+                                            <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chương</option>
+                                            <option value="index.php?controller=binhluan&action=listbinhluan">Quản lý comment</option>
+                                            <option value="index.php?controller=truyen&action=list">Quản lý truyện chưa duyêt</option>
+                                            <option value="index.php?controller=truyen&action=listdaduyet">Quản lý truyện đã duyêt</option>
+                                            <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
+                                            </option>
 
-                        <!-- <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chuong</option> -->
-                        <option value="index.php?controller=truyen&action=add">Thêm truyện</option>
-                        <option value="index.php?controller=truyen&action=truyendadang">Quản lý truyện đã đăng</option>
-                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
-                        </option>
-                    </select>
-                    <script type="text/javascript">
-                    function handleSelect(elm) {
-                        window.location = elm.value;
-                    }
-                    </script>
-                    <?php
+                                        </select>
+
+                                        <script type="text/javascript">
+                                        function handleSelect(elm) {
+                                            window.location = elm.value;
+                                        }
+                                        </script>
+                                        <?php
+                                            break;
+                                        }
+                    case 3 : {?>
+                                    <select name="tacgia" onchange="javascript:handleSelect(this)">
+                                        <option>Quyen cua tac gia </option>
+                                        <!-- <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chuong</option> -->
+                                        <option value="index.php?controller=truyen&action=add">Thêm truyện</option>
+                                        <option value="index.php?controller=truyen&action=truyendadang">Quản lý truyện đã đăng</option>
+                                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
+                                        </option>
+                                    </select>
+
+                                    <script type="text/javascript">
+                                    function handleSelect(elm) {
+                                        window.location = elm.value;
+                                    }
+                                    </script>
+
+
+                                    <?php 
                                     break;
-                                }
-                            case 4: { ?>
-                    <select name="CTV" onchange="javascript:handleSelect(this)">
-                        <option>Quyen cua cong tac vien</option>
-                        <option value="index.php?controller=user&action=list">Quan ly user</option>
-                        <option value="index.php?controller=admin&action=danh_sach_chuong">Quan ly chuong</option>
-                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
-                        </option>
-                    </select>
-                    <script type="text/javascript">
-                    function handleSelect(elm) {
-                        window.location = elm.value;
-                    }
-                    </script>
-                    <?php
-                                    break;
-                                }
-                            case 2:
-                                echo "Chuc ban doc truyen vui ve";
-                                break;
-                                ?>
-                    <?php
+                    
+                                    }
+                    case 4 : {?>
+                                    <select name="CTV" onchange="javascript:handleSelect(this)">
+                                        <option>Quyen cua cong tac vien</option>
+                                        <option value="index.php?controller=user&action=list">Quan ly user</option>
+                                        <option value="index.php?controller=admin&action=danh_sach_chuong">Quan ly chuong</option>
+                                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
+                                        </option>
+                                    </select>
+                                    <script type="text/javascript">
+                                    function handleSelect(elm) {
+                                        window.location = elm.value;
+                                    }
+                                    </script>
+                                    <?php 
+                            break;
+                            
+                            }
+                     case 2:
+                           { echo "Chuc ban doc truyen vui ve";
+                            break;}
+                
+                            ?>
+
+                                    <?php
+                            }
                         }
-                    }
-                    ?>
+                ?>
                 </div>
                 <div class="navbar-end">
-                    <Label>Hello <?php
-                                    if ($_SESSION["ten"] == null)
-                                        echo "HELLO";
-                                    else echo $_SESSION["ten"]; ?></Label>
-                    <a class="dki" href="http://localhost/PBL5_1/index.php?controller=user&action=add">Đăng kí</a>
-                    <a class="dnhap" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
-                        nhập</a><br><br>
-                </div>
-                <div class="dxuat">
-                    <a class="dxuat" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
-                        xuất</a>
+                    <Label><?php
+                    if (!isset($_SESSION["ten"]) )
+                   { echo '<a class="dki" href="index.php?controller=user&action=add">Đăng kí</a>
+                       <a class="dnhap" href="index.php?controller=user&action=login">Đăng nhập</a><br><br>';}
+                    else {echo $_SESSION["ten"]; echo '  <a class="dxuat" href="index.php?controller=user&action=dangxuat">Đăng
+                    xuất</a>';}?></Label>
                 </div>
             </ul>
 

@@ -6,8 +6,8 @@ else{
           $action = " ";
 }
 switch($action){
-          case 'add':{
-                    if(isset($_SESSION['id_currentUser'])){
+          case 'add': {
+                    if(isset($_SESSION['id_currentUser'])) {
                         if(isset($_POST['dangtruyen']) ){
                                 $tentruyen = $_POST['tentruyen'];
                                 $loaitruyen = (int)$_POST['loaitruyen'];
@@ -21,52 +21,48 @@ switch($action){
                     }
                     require_once('View/Truyen/themtruyen.php');
                     break;
-               }else{
+               } else {
                 echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';
                }
         }
-
-         
-
-        case 'edit':{
-                if(isset($_GET['id'])){
+        case 'edit': {
+                if(isset($_GET['id'])) {
                       $id = $_GET['id'];
                       $tblTable = "truyen";
                       $dataId = $db->getTruyen($id);
                 }
-                if(isset($_POST['updatetruyen'])){
+                if(isset($_POST['updatetruyen'])) {
                       $tentruyen =  $_POST['tentruyen'];
                       $id_loai =  $_POST['id_loai'];
                       $tacgia =  $_POST['tacgia'];
                       $gioithieu =  $_POST['gioithieu'];
                       $hinhdaidien =  $_POST['hinhdaidien'];
-
                       if($db->UpdateData($tentruyen, $id_loai, $tacgia, $gioithieu, $hinhdaidien,$id))
                       header('location: index.php?controller=truyen&action=truyendadang');
                 }
                   require_once('View/Truyen/suatruyen.php');
                   break;
         }
-        case 'delete':{
-                  if(isset($_GET['id'])){
+        case 'delete': {
+                  if(isset($_GET['id'])) {
                       $id = $_GET['id'];
                       $tblTable = "truyen";
                       $dataId = $db->getDataId($tblTable,$id);    
                   }
-                  if($db->Delete($id,$tblTable)){
+                  if($db->Delete($id,$tblTable)) {
                           header('location: index.php?controller=truyen&action=listdaduyet');
                   }
               //     require_once('View/Truyen/xoatruyen.php');
                   break;
                 }
 
-          case 'list':{
+          case 'list': {
                     $danhsachtruyen = array();
                     $danhsachtruyen = $db->getTruyenchuaduyet('0');
-                    if(isset($_POST['duyettruyen'])){
+                    if(isset($_POST['duyettruyen'])) {
                               if(isset($_POST['checklist'])){
                               $truyenduocduyet = $_POST['checklist'];
-                              for($i=0;$i<count($truyenduocduyet);$i++){
+                              for($i=0;$i<count($truyenduocduyet);$i++) {
                                         $db->duyetTruyen($truyenduocduyet[$i]);
                               }
                     }
@@ -80,8 +76,7 @@ switch($action){
                 require_once('View/Truyen/listtruyendaduyet.php');
                 break;
           case 'detail':{
-              
-                if(isset($_GET['idtruyen'])){
+                if(isset($_GET['idtruyen'])) {
                         $idtruyen = $_GET['idtruyen'];   
                          $truyen = $db->getTruyen($idtruyen);
                          $theloai = $db->getTheLoai($truyen->Id_Loai);
@@ -114,14 +109,9 @@ switch($action){
                                  $tenuser[$i]=$dbuser->gettenusertheoid($cmts[$i]->Id_User);
                          }
 
-                         if(isset($_POST['addcmt']))
-                         {
-
-                                 $comment=$_POST['comment'];
-                                 
-                                 
-                                if( $dbcmt->addcmt($idcurrentUser,$idtruyen,$comment)==true)
-                                {
+                         if(isset($_POST['addcmt'])) {
+                                 $comment=$_POST['comment'];      
+                                if( $dbcmt->addcmt($idcurrentUser,$idtruyen,$comment)==true) {
                                    echo header("refresh: 1");
                                 }
                          }
@@ -134,7 +124,6 @@ switch($action){
                         $idnguoidang = $_SESSION['id_currentUser'];
                         $danhsachtruyen = array();
                         $danhsachtruyen = $db->getTruyenByNguoidang($idnguoidang);
-                        
                         require_once('View/Truyen/listtruyendadang.php');
                         break;
                 }else{
@@ -142,18 +131,16 @@ switch($action){
                 }
           }
           case 'truyendangtheodoi':{
-                if(isset($_SESSION['id_currentUser'])){
+                if(isset($_SESSION['id_currentUser'])) {
                         $idcurrentUser = $_SESSION['id_currentUser'];
                         $danhsachtruyen = array();
                         $danhsachtruyen = $db->getTruyenDaTheoDoi($idcurrentUser);
-                        
                         require_once('View/Truyen/listtruyendatheodoi.php');
                         break;
-                }else{
+                } else {
                         echo '<script>alert("Bạn cần phải đăng nhập");  window.location="index.php?controller=user&action=login "</script>';
                 }
           }
-
           default:{
                     $danhsachtruyen = array();
                     $danhsachtruyen = $db->getTruyenchuaduyet('1');
