@@ -69,24 +69,25 @@
             margin-top: 0;
         }
     }
-    a {
-    background-color: #f1f1f1;
-  color: black;
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 16px;
-}
 
-a:hover {
-  background-color: #ddd;
-  color: black;
-}
+    a {
+        background-color: #f1f1f1;
+        color: black;
+        text-decoration: none;
+        display: inline-block;
+        padding: 8px 16px;
+    }
+
+    a:hover {
+        background-color: #ddd;
+        color: black;
+    }
     </style>
 </head>
 
 <body>
     <div>
-    <a href="index.php?controller=chuong&action=list&idtruyen=<?= $idtruyen?>">&laquo;Quay lại</a>
+        <a href="index.php?controller=chuong&action=list&idtruyen=<?= $idtruyen?>">&laquo;Quay lại</a>
         <h3>Edit chương</h3>
         <form action=" " method="POST" enctype="multipart/form-data">
             <table>

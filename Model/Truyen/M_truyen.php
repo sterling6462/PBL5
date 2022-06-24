@@ -233,6 +233,11 @@ class m_truyen
          }
          return false;
        }
+       public function UpdateData($tentruyen, $id_loai, $tacgia, $gioithieu, $hinhdaidien,$id)
+       {
+            $sql="UPDATE truyen SET Tentruyen='$tentruyen',Id_Loai='$id_loai',Tacgia='$tacgia',Gioithieu='$gioithieu',Hinhdaidien='$hinhdaidien' WHERE Id_Truyen='$id'  ";
+            return $this->execute($sql);
+       }
 }
 
 ?>

@@ -73,7 +73,7 @@
                 <div style="display:flex; ">
                     <a class="btntheodoi"
                         href="index.php?controller=truyen&action=detail&idtruyen=<?= $truyen->Id_Truyen?>&theodoi=">
-                       <?php 
+                        <?php 
                             if($isFollowed) {
                                 echo 'Bỏ theo dõi';
                             } else {
