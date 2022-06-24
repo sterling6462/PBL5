@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container signin">
         <div class="forms-container">
             <div class="signin-signup">
                 <form action="#" class="sign-in-form" method="POST">

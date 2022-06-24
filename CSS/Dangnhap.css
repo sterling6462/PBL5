@@ -101,7 +101,9 @@ form.sign-in-form {
   color: #aaa;
   font-weight: 500;
 }
-
+input:-webkit-autofill { 
+    -webkit-background-clip: text;
+}
 .social-text {
   padding: 0.7rem 0;
   font-size: 1rem;

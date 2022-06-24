@@ -28,18 +28,15 @@
 
         case 'login':
             {
-
                 if(isset($_POST['signin']))
                 {  
                     $ten =trim($_POST['username']);
-                    $matkhau = trim($_POST['password']);
-               
+                    $matkhau = trim($_POST['password']);               
                 if(!$ten||!$matkhau)
                 {
-                    echo '<script language="javascript">alert("Mời nhập đủ thông tin !!!"); window.location="index.php?controller=user&action=dangnhap";</script>';
+                    echo '<script language="javascript">alert("Mời nhập đủ thông tin !!!"); window.location="index.php?controller=user&action=login";</script>';
                 }
-                else{
-                   
+                else{                   
                     $ktra=$db->ktrauserpass($ten,$matkhau);
                     if($ktra==1)
                     {
@@ -57,11 +54,7 @@
                     }
                     else
                     {
-
-                        echo '<script language="javascript">alert("Đăng nhập thất bại !!! Vui lòng nhập lại !!"); window.location="index.php?controller=user&action=dangnhap";</script>';
-
                         echo '<script language="javascript">alert("Đăng nhập thất bại !!! Vui lòng nhập lại !!"); window.location="index.php?controller=user&action=login";</script>';
-
                     }
                 }
             }
@@ -70,8 +63,7 @@
             }
 
         case 'add':
-            {
-                      
+            {                      
                 if (isset($_POST['signup'])){
 
                     $ten =trim($_POST['username']);
@@ -81,9 +73,7 @@
                     $matkhau = trim($_POST['password']);
                     $gioitinh =$_POST['gioitinh'];
                     $quyen =$_POST['quyen'];
-                    $ktra=$db->ktraemailuser($ten,$email);
-                 
-                  
+                    $ktra=$db->ktraemailuser($ten,$email);               
                     if(!$ten||!$ngaysinh||!$diachi||!$email||!$matkhau)
                     {
                         echo '<script language="javascript">alert("Mời nhập đủ thông tin !!!"); window.location="index.php?controller=user&action=add";</script>';
@@ -95,7 +85,7 @@
                          {
                             if($db->adduser($ten,$ngaysinh,$diachi,$email,$matkhau,$gioitinh,$quyen))
                             {
-                                echo '<script language="javascript">alert("Dang ky thanh cong "); window.location="index.php?controller=user&action=dangnhap";</script>';
+                                echo '<script language="javascript">alert("Dang ky thanh cong "); window.location="index.php?controller=user&action=trangchu";</script>';
                             }
                          }
                         else 
