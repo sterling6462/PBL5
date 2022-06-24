@@ -28,18 +28,15 @@
 
         case 'login':
             {
-
                 if(isset($_POST['signin']))
                 {  
                     $ten =trim($_POST['username']);
-                    $matkhau = trim($_POST['password']);
-               
+                    $matkhau = trim($_POST['password']);               
                 if(!$ten||!$matkhau)
                 {
-                    echo '<script language="javascript">alert("Mời nhập đủ thông tin !!!"); window.location="index.php?controller=user&action=dangnhap";</script>';
+                    echo '<script language="javascript">alert("Mời nhập đủ thông tin !!!"); window.location="index.php?controller=user&action=login";</script>';
                 }
-                else{
-                   
+                else{                   
                     $ktra=$db->ktrauserpass($ten,$matkhau);
                     if($ktra==1) {
                         $user=$db->getusertheoten($ten);
@@ -47,7 +44,8 @@
                         $_SESSION["id_currentUser"] = $user['Id_User'];
                         $_SESSION["ten"]=$ten;
                         echo '<script language="javascript">alert("Đăng nhâp thành công!"); window.location="index.php?controller=user&action=trangchu";</script>';
-                    } else  {
+                    }
+                    else{
                         echo '<script language="javascript">alert("Đăng nhập thất bại !!! Vui lòng nhập lại !!"); window.location="index.php?controller=user&action=login";</script>';
                     }
                 }
@@ -56,9 +54,8 @@
                 break;
             }
         case 'add':
-            {
-                      
-                if (isset($_POST['signup'])) {
+            {                      
+                if (isset($_POST['signup'])){
                     $ten =trim($_POST['username']);
                     $ngaysinh = trim($_POST['date']);
                     $diachi = trim($_POST['diachi']);
