@@ -12,8 +12,11 @@
         rel="stylesheet">
     <link rel="stylesheet" href="PBL5/Trangchu.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="CSS/Trangchu1.css">
+
 <body>
     <style>
+
+
     </style>
     <!-- 
     <?php   
@@ -21,12 +24,20 @@
 	    mysqli_select_db($link,"pbl5_1");
 	    $sql="SELECT * FROM truyen where Duyet=1";
 	    $result=mysqli_query($link,$sql);
+
+
         $sql1="SELECT * FROM loaitruyen";
         $result1=mysqli_query($link,$sql1);
     ?> -->
+
+
+
     </style>
+
+
     <section id="nav">
         <div>
+
             <ul>
                 <li><a class="navbar-item" href="/">
                         <img width="50" height="50"
@@ -131,13 +142,25 @@
 
 
                 </div>
+
                 <div class="navbar-end">
-                    <Label><?php
-                    if (!isset($_SESSION["ten"]) )
-                   { echo '<a class="dki" href="index.php?controller=user&action=add">Đăng kí</a>
-                       <a class="dnhap" href="index.php?controller=user&action=login">Đăng nhập</a><br><br>';}
-                    else {echo $_SESSION["ten"]; echo '  <a class="dxuat" href="index.php?controller=user&action=dangxuat">Đăng
-                    xuất</a>';}?></Label>
+                    <Label>Hello <?php
+                    if ($_SESSION["ten"]=='' )
+                    echo "HELLO";
+                    else echo $_SESSION["ten"]; ?></Label>
+
+
+
+                    <a class="dki" href="http://localhost/PBL5_1/index.php?controller=user&action=add">Đăng kí</a>
+
+                    <a class="dnhap" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
+                        nhập</a><br><br>
+
+
+                </div>
+                <div class="dxuat">
+                    <a class="dxuat" href="http://localhost/PBL5_1/index.php?controller=user&action=login">Đăng
+                        xuất</a>
                 </div>
             </ul>
 
@@ -166,13 +189,15 @@
             </div>
             <center>
     </section>
+
+    <!-- <script src="jquery.js"></script> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         $("#fetchval").on('change', function() {
             var value = $(this).val();
             $.ajax({
-                url: 'View/Truyen/fetch.php',
+                url: 'http://localhost/PBL5_1/View/Truyen/fetch.php',
                 type: 'POST',
                 data: 'request=' + value,
                 beforeSend: function() {
@@ -186,59 +211,38 @@
     });
     </script>
 
-    <div class="container" style="  display: flex; flex-direction: column; color:#ffffff">
-        <div id="danh-sach-truyen">
-            <h2>DANH SÁCH TRUYỆN</h2>
-            <?php
-            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
-            $query = "SELECT * from truyen";
-            $output = mysqli_query($conn, $query);
-            echo '<section class="truyens" >';
-            while ($fetch = mysqli_fetch_assoc($output)) {
-                echo '<section class="truyen">';
-                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
-                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
-                echo '</section>';
-            };
-            echo '</section>';
-            ?>
-        </div>
-        <div class="truyen-theo-doi">
-            <h2>TRUYỆN THEO DÕI</h2>
-            <?php
-            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
-            $query = "SELECT * from truyen";
-            $output = mysqli_query($conn, $query);
-            echo '<section class="truyens" >';
-            while ($fetch = mysqli_fetch_assoc($output)) {
-                echo '<section class="truyen">';
-                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
-                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
-                echo '</section>';
-            };
-            echo '</section>';
-            ?>
-        </div>
-        <div class="bang-xep-hang">
-            <h2>BẢNG XẾP HẠNG</h2>
-            <?php
-            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
-            $query = "SELECT * from truyen";
-            $output = mysqli_query($conn, $query);
-            echo '<section class="truyens" >';
-            while ($fetch = mysqli_fetch_assoc($output)) {
-                echo '<section class="truyen">';
-                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
-                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
-                echo '</section>';
-            };
-            echo '</section>';
-            ?>
-        </div>
+    <div id="container">
+        <?php
+      $conn = mysqli_connect('localhost','root','','pbl5_1');
+      $query="SELECT * from truyen";
+      $output=mysqli_query($conn,$query);
+echo '<section class="truyens" >';
+      while($fetch = mysqli_fetch_assoc($output))
+    {
+    echo '<section class="truyen">';
+        echo '<section class="img"><img src="'.$fetch['Hinhdaidien'].'"></section>';
+        echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen='.$fetch['Id_Truyen'].'">'.$fetch['Tentruyen'].'</a></section>';
+    echo '</section>';
+     };
+echo '</section>';
+?>
     </div>
+
+
+    <div class="theodoi">
+        <h2>=>>>>TRUYỆN THEO DÕI</h2>
+
+        <section id="nav3">
+        </section><br>
+    </div><br>
+
 </body>
 </head>
 <footer>
+
+
+
 </footer>
+
 
 </html>
