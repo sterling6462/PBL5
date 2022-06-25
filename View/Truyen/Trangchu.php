@@ -15,19 +15,18 @@
     <link rel="stylesheet" href="CSS/header.css">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
-    <link rel="stylesheet" href="PBL5/Trangchu.css" type="text/css">
-    <link rel="stylesheet" type="text/css" href="CSS/Trangchu1.css">
+
 </head>
 
 <body>
-    <!-- 
-    <?php   
-        $link=mysqli_connect("localhost","root","") or die("khong the ket noi den co so du lieu");
-	    mysqli_select_db($link,"pbl5_1");
-	    $sql="SELECT * FROM truyen where Duyet=1";
-	    $result=mysqli_query($link,$sql);
-        $sql1="SELECT * FROM loaitruyen";
-        $result1=mysqli_query($link,$sql1);
+    <!--     
+    <?php
+    $link = mysqli_connect("localhost", "root", "") or die("khong the ket noi den co so du lieu");
+    mysqli_select_db($link, "pbl5_1");
+    $sql = "SELECT * FROM truyen where Duyet=1";
+    $result = mysqli_query($link, $sql);
+    $sql1 = "SELECT * FROM loaitruyen";
+    $result1 = mysqli_query($link, $sql1);
     ?> -->
     </section>
     <section id="nav1">
@@ -50,13 +49,13 @@
 
                         <body>
                             <?php
-    $link = mysqli_connect("localhost", "root", "") or die("khong the ket noi den co so du lieu");
-    mysqli_select_db($link, "pbl5_1");
-    $sql = "SELECT * FROM truyen where Duyet=1";
-    $result = mysqli_query($link, $sql);
-    $sql1 = "SELECT * FROM loaitruyen";
-    $result1 = mysqli_query($link, $sql1);
-    ?>
+                            $link = mysqli_connect("localhost", "root", "") or die("khong the ket noi den co so du lieu");
+                            mysqli_select_db($link, "pbl5_1");
+                            $sql = "SELECT * FROM truyen where Duyet=1";
+                            $result = mysqli_query($link, $sql);
+                            $sql1 = "SELECT * FROM loaitruyen";
+                            $result1 = mysqli_query($link, $sql1);
+                            ?>
                             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
                             <script type="text/javascript">
                             $(document).ready(function() {
@@ -76,11 +75,11 @@
                                 });
                             });
                             </script>
-                            <header class="header">
+                            <header class="header" style="position:fixed;color:#005555;width: 100%;">
                                 <?php include "header.php" ?>
                             </header>
 
-                            <div class="container" style="display: flex; flex-direction: column; color:#005555;">
+                            <div class="container-home" style="display: flex; flex-direction: column; color:#005555;">
                                 <div class="the-loai">
                                     <h3 class="the-loai">Thể loại</h3>
                                     <div class="the-loai-select">
@@ -97,63 +96,64 @@
                                 <div id="danh-sach-truyen">
                                     <h2>DANH SÁCH TRUYỆN</h2>
                                     <?php
-            $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
-            $query = "SELECT * from truyen";
-            $output = mysqli_query($conn, $query);
-            echo '<section class="truyens" >';
-            while ($fetch = mysqli_fetch_assoc($output)) {
-                echo '<section class="truyen">';
-                echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
-                echo '<section class="name"><a class="name-tittle" href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
-                echo '</section>';
-            };
-            echo '</section>';
-            ?>
+                                    $conn = mysqli_connect('localhost', 'root', '', 'pbl5_1');
+                                    $query = "SELECT * from truyen";
+                                    $output = mysqli_query($conn, $query);
+                                    echo '<section class="truyens" >';
+                                    while ($fetch = mysqli_fetch_assoc($output)) {
+                                        echo '<section class="truyen">';
+                                        echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
+                                        echo '<section class="name"><a class="name-tittle" href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
+                                        echo '</section>';
+                                    };
+                                    echo '</section>';
+                                    ?>
                                 </div>
                                 <div class="truyen-theo-doi">
                                     <h2>TRUYỆN THEO DÕI</h2>
-                                    <section class="truyens">
-                                        <?php for($i=1;$i<=sizeof($truyentheodoi);$i++){
-            
-                $ten=$truyentheodoi[$i]->Tentruyen;?>
+                                    <section class="truyen-theodoi">
+                                        <?php for ($i = 1; $i <= sizeof($truyentheodoi); $i++) {
+
+                                            $ten = $truyentheodoi[$i]->Tentruyen; ?>
                                         <section class="truyen">
-                                            <section class="img"><img src="<?=$truyentheodoi[$i]->Hinhdaidien?>">
+                                            <section class="img"><img src="<?= $truyentheodoi[$i]->Hinhdaidien ?>">
                                             </section>
                                             <section class="name"><a
-                                                    href="index.php?controller=truyen&action=detail&idtruyen=<?php echo $truyentheodoi[$i]->Id_Truyen;?>"><?=$truyentheodoi[$i]->Tentruyen?>
+                                                    href="index.php?controller=truyen&action=detail&idtruyen=<?php echo $truyentheodoi[$i]->Id_Truyen; ?>"><?= $truyentheodoi[$i]->Tentruyen ?>
                                                 </a>
                                             </section>
                                             <a href="">
-                                                <? echo $ten?>
+                                                <? echo $ten ?>
                                             </a>
                                         </section>
-                                        <?php }?>
+                                        <?php } ?>
                                     </section>
                                 </div>
                                 <div class="bang-xep-hang">
                                     <h2>BẢNG XẾP HẠNG</h2>
-                                    <section class="truyens">
-                                        <?php for($i=1;$i<=sizeof($bangxephang);$i++){
-            
-                $ten=$bangxephang[$i]->Tentruyen;?>
+                                    <section class="truyen-xephang">
+                                        <?php for ($i = 1; $i <= sizeof($bangxephang); $i++) {
+
+                                            $ten = $bangxephang[$i]->Tentruyen; ?>
                                         <section class="truyen">
-                                            <section class="img"><img src="<?=$bangxephang[$i]->Hinhdaidien?>">
+                                            <section class="img"><img src="<?= $bangxephang[$i]->Hinhdaidien ?>">
                                             </section>
                                             <section class="name"><a
-                                                    href="index.php?controller=truyen&action=detail&idtruyen=<?php echo $bangxephang[$i]->Id_Truyen;?>"><?=$bangxephang[$i]->Tentruyen?>
+                                                    href="index.php?controller=truyen&action=detail&idtruyen=<?php echo $bangxephang[$i]->Id_Truyen; ?>"><?= $bangxephang[$i]->Tentruyen ?>
                                                 </a>
                                             </section>
                                             <a href="">
-                                                <? echo $ten?>
+                                                <? echo $ten ?>
                                             </a>
                                         </section>
-                                        <?php }?>
+                                        <?php } ?>
                                     </section>
                                 </div>
                             </div>
-                            <footer class="footer">
+                            <!-- <footer class="footer">
                                 <?php include "footer.php" ?>
-                            </footer>
+                            </footer> -->
                         </body>
+
 
 </html>

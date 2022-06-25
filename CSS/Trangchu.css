@@ -1,6 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
 
-* {
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+*{
   font-family: "Nunito", sans-serif;
   box-sizing: border-box;
 }
@@ -61,10 +62,16 @@ html {
   align-items: center;
   margin: 20px;
 }
+
+.container-home{
+  padding: 50px;
+}
+
 /* #nav1 .bang {
   padding: 50px;
   align-items: center;
 }
+
 #nav1 .bang .form-control {
   border: 3px solid transparent;
 } */
