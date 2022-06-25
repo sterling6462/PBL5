@@ -51,6 +51,7 @@
                     <th>Người đăng</th>
                     <th>Giới thiệu</th>
                     <th>Ngày đăng</th>
+                    <th>Sửa</th>
 
                 </tr>
             </thead>

@@ -21,6 +21,17 @@
                 $item=$dbloai->listtheloai();
                 $itemtruyen=array();
                 $itemtruyen=$dbtruyen->getTruyenchuaduyet('1');
+
+                $iduser=$_SESSION["id_currentUser"];
+                $theodoi=array();
+                $theodoi=$dbtruyen->getidtruyentheodoi($iduser);
+                $truyentheodoi=array();
+                for($i=1;$i<=sizeof($theodoi);$i++)
+                {
+                    $truyentheodoi[$i]=$dbtruyen->getTruyen($theodoi[$i]->idtruyen);
+                }
+                $bangxephang=array();
+                $bangxephang=$dbtruyen->xephang();
             require_once('View/Truyen/Trangchu.php');
             break;
 
@@ -36,7 +47,7 @@
                
                 if(!$ten||!$matkhau)
                 {
-                    echo '<script language="javascript">alert("Mời nhập đủ thông tin !!!"); window.location="index.php?controller=user&action=dangnhap";</script>';
+                    echo '<script language="javascript">alert("Mời nhập đủ thông tin !!!"); window.location="index.php?controller=user&action=login";</script>';
                 }
                 else{
                    
@@ -58,7 +69,7 @@
                     else
                     {
 
-                        echo '<script language="javascript">alert("Đăng nhập thất bại !!! Vui lòng nhập lại !!"); window.location="index.php?controller=user&action=dangnhap";</script>';
+                        echo '<script language="javascript">alert("Đăng nhập thất bại !!! Vui lòng nhập lại !!"); window.location="index.php?controller=user&action=login";</script>';
 
                         echo '<script language="javascript">alert("Đăng nhập thất bại !!! Vui lòng nhập lại !!"); window.location="index.php?controller=user&action=login";</script>';
 
@@ -95,7 +106,7 @@
                          {
                             if($db->adduser($ten,$ngaysinh,$diachi,$email,$matkhau,$gioitinh,$quyen))
                             {
-                                echo '<script language="javascript">alert("Dang ky thanh cong "); window.location="index.php?controller=user&action=dangnhap";</script>';
+                                echo '<script language="javascript">alert("Dang ky thanh cong "); window.location="index.php?controller=user&action=login";</script>';
                             }
                          }
                         else 
@@ -137,7 +148,7 @@
                     
                     if($db->edituser($id,$Ten,$Ngaysinh,$Diachi,$Email,$Pass,$Gioitinh,$Quyen))
                     {   
-                        echo '<script language="javascript">alert("Chinh sua thanh cong user"); window.location="index.php?controller=user&action=trangchu";</script>';
+                        echo '<script language="javascript">alert("Chinh sua thanh cong user"); window.location="index.php?controller=user&action=login";</script>';
                         // header('location: index.php?action=list');
                     }
                    
@@ -163,6 +174,13 @@
                 require_once('');
                 break;
             }
+            case 'dangxuat':
+                {
+                    unset($_SESSION["id_currentUser"]);
+                    unset($_SESSION["id_quyen"]);
+                    unset($_SESSION["ten"]);
+                    echo '<script language="javascript">window.location="index.php?controller=user&action=login";</script>';
+                }
         case 'test':
             {
                
@@ -170,9 +188,12 @@
         default:
             {
               
-                $users=$db->travelistuser();
-                require_once('View/User/List_user.php');
-                break;
+                $item=array();
+                $item=$dbloai->listtheloai();
+                $itemtruyen=array();
+                $itemtruyen=$dbtruyen->getTruyenchuaduyet('1');
+            require_once('View/Truyen/Trangchu.php');
+            break;
             }
         
     }

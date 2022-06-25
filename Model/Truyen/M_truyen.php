@@ -2,6 +2,8 @@
 include_once("E_truyen.php");
 //include_once("E_chuong.php");
 include_once("./Model/Chuong/E_chuong.php");
+
+include_once("./Model/Theodoi/E_theodoi.php");
 class m_truyen
 {
     private $hostname='localhost';
@@ -237,6 +239,47 @@ class m_truyen
        {
             $sql="UPDATE truyen SET Tentruyen='$tentruyen',Id_Loai='$id_loai',Tacgia='$tacgia',Gioithieu='$gioithieu',Hinhdaidien='$hinhdaidien' WHERE Id_Truyen='$id'  ";
             return $this->execute($sql);
+       }
+       public function getidtruyentheodoi($id)
+       {
+        $sql = "SELECT * FROM theodoi WHERE Id_User = '$id' ";
+        $theodoi=array();
+        $i=1;
+        $rs=mysqli_query($this->conn,$sql);
+        while($row=mysqli_fetch_array($rs))
+        {
+            $idtheodoi=$row['Id_Theodoi'];
+            $iduser=$row['Id_User'];
+            $idtruyen=$row['Id_Truyen'];
+            $theodoi[$i]=new E_theodoi($idtheodoi,$iduser,$idtruyen);
+            $i++;
+        }
+        return $theodoi;
+
+       }
+       public function xephang()
+       {
+        $sql="SELECT * FROM truyen ORDER BY Luotxem DESC limit 5";
+       
+        $i=1;
+        $rs = mysqli_query($this->conn, $sql);
+        $truyen = array();
+                 while($row = mysqli_fetch_array($rs)){
+                           $idtruyen = $row['Id_Truyen'];
+                           $idloai =  $row['Id_Loai'];
+                           $iduser = $row['Id_User'];
+                           $tentruyen =  $row['Tentruyen'];
+                           $tinhtrang =  $row['Tinhtrang'];
+                           $tacgia =  $row['Tacgia'];
+                           $gioithieu =  $row['Gioithieu'];
+                           $ngaydang =  $row['Ngaydang'];
+                           $hinhdaidien = $row['Hinhdaidien'];
+                           $luotxem=$row['Luotxem'];
+                           $duyet =  $row['Duyet'];
+                           $truyen[$i] = new e_truyen($idtruyen,$idloai,$iduser, $tentruyen, $tinhtrang, $tacgia, $gioithieu, $ngaydang, $hinhdaidien,$luotxem, $duyet );
+                           $i++;
+                 }
+             return $truyen;
        }
 }
 

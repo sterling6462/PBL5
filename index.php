@@ -79,7 +79,16 @@
             break;
 
         default:
-           require_once('');
-            break;
+        include "Model/Truyen/M_truyen.php";
+        $dbtruyen=new m_truyen();
+        $dbtruyen->connect();
+        include "Model/Theloai/M_theloai.php";
+        $dbloai=new m_theloai();
+        $dbloai->connect();
+        include_once "Model/User/M_user.php";
+        $db=new m_user;
+        $db->connect();
+        require_once('Controller/user/index.php');
+        break;
     }
 ?>
