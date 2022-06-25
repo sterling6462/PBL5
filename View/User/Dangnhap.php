@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container signin">
         <div class="forms-container">
             <div class="signin-signup">
                 <form action="#" class="sign-in-form" method="POST">
@@ -52,7 +52,7 @@
                             Đăng kí
                         </button>
                     </div>
-                    <img src="../../assets/img/log.svg" class="image" alt="" />
+                    <img src="Assets/img/log.svg" class="image" alt="" />
                 </div>
                 <div class="panel right-panel">
                     <div class="content">
@@ -65,7 +65,7 @@
                             Đăng nhập
                         </button>
                     </div>
-                    <img src="img/register.svg" class="image" alt="" />
+                    <img src="Assets/img/register.svg" class="image" alt="" />
                 </div>
             </div>
         </div>
