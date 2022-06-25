@@ -10,11 +10,15 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,700&display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="CSS/Trangchu.css" type="text/css">
+    <link rel="stylesheet" href="CSS/footer.css">
+    <link rel="stylesheet" href="CSS/header.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="PBL5/Trangchu.css" type="text/css">
     <link rel="stylesheet" type="text/css" href="CSS/Trangchu1.css">
+    </head>
 <body>
-    <style>
-    </style>
     <!-- 
     <?php   
         $link=mysqli_connect("localhost","root","") or die("khong the ket noi den co so du lieu");
@@ -24,113 +28,6 @@
         $sql1="SELECT * FROM loaitruyen";
         $result1=mysqli_query($link,$sql1);
     ?> -->
-    </style>
-    <section id="nav">
-        <div>
-            <ul>
-                <li><a class="navbar-item" href="/">
-                        <img width="50" height="50"
-                            src="https://drive.google.com/uc?export=view&id=1z1geOoZYriQ-wjqYLDLPPeNmUJCgN9Ku"
-                            alt="Doctruyen logo" class="layout_logo__319hZ">
-                </li>
-                <li><a href="#search">Tìm kiếm</a></li>
-                <li><a href="#truyenhot">Truyện hot</a></li>
-                <li><a href="#truyenle">Truyện lẻ</a></li>
-                <li><a href="#truyenbo">Truyện bộ</a></li>
-                <li><a href="#truyenmoi">Truyện mới</a></li>
-                <div class="dropdown">
-                    <?php
-                    $iduser=$_SESSION["id_currentUser"];
-                    $quyen=$_SESSION["id_quyen"] . "<br>";
-                    if ($quyen=='')
-                    {
-                        echo "Chúc bạn đọc truyện vui vẻ <3!!!!";
-                    }
-                    else
-                    {
-                    switch ($quyen)
-                    {
-                        case 1 : { ?>
-                                        <select name="admin" onchange="javascript:handleSelect(this)">
-                                            <option>Quyền của admin</option>
-                                            <option value="index.php?controller=user&action=list">Quản lý user</option>
-                                            <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chương</option>
-                                            <option value="index.php?controller=binhluan&action=listbinhluan">Quản lý comment</option>
-                                            <option value="index.php?controller=truyen&action=list">Quản lý truyện chưa duyêt</option>
-                                            <option value="index.php?controller=truyen&action=listdaduyet">Quản lý truyện đã duyêt</option>
-                                            <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
-                                            </option>
-
-                                        </select>
-
-                                        <script type="text/javascript">
-                                        function handleSelect(elm) {
-                                            window.location = elm.value;
-                                        }
-                                        </script>
-                                        <?php
-                                            break;
-                                        }
-                    case 3 : {?>
-                                    <select name="tacgia" onchange="javascript:handleSelect(this)">
-                                        <option>Quyen cua tac gia </option>
-                                        <!-- <option value="index.php?controller=admin&action=danh_sach_chuong">Quản lý chuong</option> -->
-                                        <option value="index.php?controller=truyen&action=add">Thêm truyện</option>
-                                        <option value="index.php?controller=truyen&action=truyendadang">Quản lý truyện đã đăng</option>
-                                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
-                                        </option>
-                                    </select>
-
-                                    <script type="text/javascript">
-                                    function handleSelect(elm) {
-                                        window.location = elm.value;
-                                    }
-                                    </script>
-
-
-                                    <?php 
-                                    break;
-                    
-                                    }
-                    case 4 : {?>
-                                    <select name="CTV" onchange="javascript:handleSelect(this)">
-                                        <option>Quyen cua cong tac vien</option>
-                                        <option value="index.php?controller=user&action=list">Quan ly user</option>
-                                        <option value="index.php?controller=admin&action=danh_sach_chuong">Quan ly chuong</option>
-                                        <option value="index.php?controller=user&action=edit&id=<?php echo $iduser; ?>">Sửa thông tin
-                                        </option>
-                                    </select>
-                                    <script type="text/javascript">
-                                    function handleSelect(elm) {
-                                        window.location = elm.value;
-                                    }
-                                    </script>
-                                    <?php 
-                            break;
-                            
-                            }
-                     case 2:
-                           { echo "Chuc ban doc truyen vui ve";
-                            break;}
-                
-                            ?>
-
-                                    <?php
-                            }
-                        }
-                ?>
-                </div>
-                <div class="navbar-end">
-                    <Label><?php
-                    if (!isset($_SESSION["ten"]) )
-                   { echo '<a class="dki" href="index.php?controller=user&action=add">Đăng kí</a>
-                       <a class="dnhap" href="index.php?controller=user&action=login">Đăng nhập</a><br><br>';}
-                    else {echo $_SESSION["ten"]; echo '  <a class="dxuat" href="index.php?controller=user&action=dangxuat">Đăng
-                    xuất</a>';}?></Label>
-                </div>
-            </ul>
-
-        </div>
     </section>
     <section id="nav1">
         <center>
@@ -149,33 +46,52 @@
                                 <option value="3" class="theloai">Tiểu thuyết</option>
                             </select>
                         </td>
-
-                    </tr>
-                </table>
-            </div>
-            <center>
-    </section>
+<body>
+    <?php
+    $link = mysqli_connect("localhost", "root", "") or die("khong the ket noi den co so du lieu");
+    mysqli_select_db($link, "pbl5_1");
+    $sql = "SELECT * FROM truyen where Duyet=1";
+    $result = mysqli_query($link, $sql);
+    $sql1 = "SELECT * FROM loaitruyen";
+    $result1 = mysqli_query($link, $sql1);
+    ?>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
         $("#fetchval").on('change', function() {
             var value = $(this).val();
             $.ajax({
-                url: 'http://localhost/PBL5_1/View/Truyen/fetch.php',
+                url: 'View/Truyen/fetch.php',
                 type: 'POST',
                 data: 'request=' + value,
                 beforeSend: function() {
-                    $("#danh-sach-truyen").html('Working...');
+                    $("#container").html('Working...');
                 },
                 success: function(data) {
-                    $("#danh-sach-truyen").html(data);
+                    $("#container").html(data);
                 },
             });
         });
     });
     </script>
+    <header class="header">
+        <?php include "header.php" ?>
+    </header>
 
-    <div class="container" style="  display: flex; flex-direction: column; color:#ffffff">
+    <div class="container" style="display: flex; flex-direction: column; color:#005555;">
+        <div class="the-loai">
+            <h3 class="the-loai">Thể loại</h3>
+            <div class="the-loai-select">
+                <td>
+                    <select name="loaitruyen" class="form-control" id="fetchval">
+                        <option value="" class="theloai" disabled="" selected="">Tất cả</option>
+                        <option value="0" class="theloai">Thần thoại</option>
+                        <option value="1" class="theloai">Thiếu nhi</option>
+                        <option value="2" class="theloai">Trinh thám</option>
+                        <option value="3" class="theloai">Tiểu thuyết</option>
+                    </select>
+            </div>
+        </div>
         <div id="danh-sach-truyen">
             <h2>DANH SÁCH TRUYỆN</h2>
             <?php
@@ -186,7 +102,7 @@
             while ($fetch = mysqli_fetch_assoc($output)) {
                 echo '<section class="truyen">';
                 echo '<section class="img"><img src="' . $fetch['Hinhdaidien'] . '"></section>';
-                echo '<section class="name"><a href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
+                echo '<section class="name"><a class="name-tittle" href="index.php?controller=truyen&action=detail&idtruyen=' . $fetch['Id_Truyen'] . '">' . $fetch['Tentruyen'] . '</a></section>';
                 echo '</section>';
             };
             echo '</section>';
@@ -225,9 +141,9 @@
             ?>
         </div>
     </div>
+    <footer class="footer">
+        <?php include "footer.php" ?>
+    </footer>
 </body>
-</head>
-<footer>
-</footer>
 
 </html>
